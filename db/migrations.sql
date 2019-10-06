@@ -9,7 +9,7 @@ CREATE TABLE users(
   password VARCHAR(32)
 );
 
-CREATE TABLE traks(
+CREATE TABLE days(
   id SERIAL PRIMARY KEY,
   day TIMESTAMP,
   wake_up_time TIMESTAMP,
