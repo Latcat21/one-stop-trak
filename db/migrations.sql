@@ -11,7 +11,7 @@ CREATE TABLE users(
 
 CREATE TABLE days(
   id SERIAL PRIMARY KEY,
-  day TIMESTAMP,
+  name VARCHAR(255),
   wake_up_time TIMESTAMP,
   task VARCHAR(255),
   food VARCHAR(255),

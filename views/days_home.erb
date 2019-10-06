@@ -1,1 +1,10 @@
 <h1>Welcome to your account</h2>
+<h2>Here are all your days</h1>
+<a href="/days/new">Start a new day</a>
+
+<h3>Here are you days</h3>
+<ul>
+<% @days.each do | day |%>
+<li><%=day.name %></li>
+</ul>
+<%end%>
