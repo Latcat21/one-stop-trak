@@ -30,10 +30,11 @@ class DayController < ApplicationController
     post('/new') do
       new_day = Day.new
       new_day.name = params[:name]
-      new_day.wake_up_time = params[:time]
+      new_day.time_awake = params[:time]
       new_day.task = params[:tasks]
       new_day.food = params[:foods]
       new_day.workout = params[:workout]
+      new_day.calorie = params[:calories]
 
       logged_in_user = User.find_by ({ :username => session[:username] })
 
@@ -50,6 +51,11 @@ class DayController < ApplicationController
       redirect '/days'
 
 
+    end
+
+    get '/:id' do
+      @day = Day.find params[:id]
+      erb :day_show
     end
 
     

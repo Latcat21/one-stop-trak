@@ -1,0 +1,30 @@
+<h1>Your Day</h1>
+<h2><%= @day.name %></h2>
+<h2>You woke up at</h2>
+<h2><%= @day.time_awake %></h2>
+<h2>Your Tasks</h2>
+
+<%@day.task.split("," ) do |task|%>
+<ul>
+<li><%=task%></li>
+</ul>
+
+<%end%>
+
+<h2>Foods you have eaten</h2>
+<%@day.food.split("," ) do |food|%>
+<ul>
+<li><%=food%></li>
+</ul>
+
+<%end%>
+
+<h2>Your workout</h2>
+<%@day.workout.split("," ) do |workout|%>
+<ul>
+<li><%=workout%></li>
+</ul>
+
+<%end%>
+<h2>Your Estimated calories</h2>
+<h3><%=@day.calorie%></h3>
