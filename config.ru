@@ -2,6 +2,8 @@ require 'sinatra/base'
 
 #controllers
 require './controllers/ApplicationController'
+require './controllers/UserController'
+require './controllers/DayController'
 
 
 #models
@@ -15,4 +17,8 @@ map ('/'){
 
 map ('/users'){
   run UserController
+}
+
+map ('/days') {
+  run DayController
 }

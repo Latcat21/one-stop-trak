@@ -6,7 +6,7 @@ CREATE DATABASE one_stop;
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(32),
-  password VARCHAR(32)
+  password_digest VARCHAR(60)
 );
 
 CREATE TABLE days(

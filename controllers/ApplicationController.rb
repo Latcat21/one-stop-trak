@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     #render a splash page of home page
-    redirect '/home'
+    erb :index
   end
 
   get '/test' do
