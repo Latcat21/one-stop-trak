@@ -1,20 +1,45 @@
-<H1>Start Your New Day here</h1>
-<h2>Please Fill Out the following</h2>
-<h3>You can Add / change later in the day </h3>
+<div class="container">
+<div class="day-form bg-white rounded shadow-lg">
+<h1 class=" text-secondary display-3">Start Your New Day here</h1>
+<h4>Please Fill Out the following</h4>
+<h4>You can Add / change later in the day </h4>
 
 <form  action="/days/new" method="POST">
+<div class="form-group">
+<label>Name Your Day</label>
 <input 
+class="form-control"
 type="text" 
 name="name" 
-placeholder="name your day" /><br>
+/>
+</div>
+
+<div class="form-group">
+<label>Time you woke up</label>
 <input 
+class="form-control"
 type="text" 
 name="time" 
-placeholder="time you woke up" /><br>
-<textarea name="tasks">Enter Your days taks </textarea><br>
-<textarea name="foods">Enter in the foods you've eaten</textarea><br>
-<textarea name="workout">Enter in your workouts</textarea><br>
-<textarea name="calories">Estimate your total calories</textarea><br>
-<button>Create Day</button>
+ />
+ </div>
+ <div class="form-group">
+ <label>Enter your days tasks seperated by commas</label>
+<textarea class="form-control" name="tasks" rows=4></textarea>
+</div>
+<div class="form-group">
+<label>Enter in the foods you've eaten seperated by commas</label>
+<textarea class="form-control" name="foods" rows=4></textarea>
+</div>
+<div class="form-group">
+<label>Enter in your workouts seperated by commas</label>
+<textarea class="form-control" name="workout" rows=4></textarea>
+</div>
+<div class="form-group">
+<label>Estimate your total calories</label>
+<textarea name="calories" class="form-control" row=2></textarea>
+</div>
+<button class="btn btn-primary" >Create Day</button>
 
 <form>
+</div>
+</div>
