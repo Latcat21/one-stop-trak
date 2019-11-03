@@ -1,8 +1,9 @@
-A mobile first app that is a one stop all for organizing your day and keep track of your health and fitness goals
+A mobile first app to help you organize your day and keep track of your health and fitness goals
 
 when you start a new day you can lists your tasks for that day.
 
-you can also keep track of..
+you can also keep track of
+
 -Your wake up time
 -The foods you have eaten
 -Calories consumed
