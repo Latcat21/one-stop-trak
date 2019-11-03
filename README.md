@@ -1,12 +1,5 @@
 A mobile first app to help you organize your day and keep track of your health and fitness goals
 
-when you start a new day you can lists your tasks for that day.
+when you start a new day you can lists your tasks for that day, your wake up time, the foods you have eaten, calories consumed, and workouts completed.
 
-you can also keep track of
-
--Your wake up time
--The foods you have eaten
--Calories consumed
--Workouts completed
-
-On you home page you will be shown a list of all your days, the average time you wake up, and average calories you consume per day.
+On your home page you will be shown a list of all your days, the average time you woke up and the average amount of calories you consumed per day.
