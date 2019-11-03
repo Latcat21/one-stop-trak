@@ -19,6 +19,10 @@ class DayController < ApplicationController
     get('/') do
       user = User.find_by ({ :username => session[:username] })
       @days = user.days
+      all_days = Day.all
+      puts '---------------'
+      puts  all_days
+      puts 'all days ^^^^^^^^'
       
       erb :days_home
     end
@@ -35,7 +39,6 @@ class DayController < ApplicationController
       new_day.food = params[:foods]
       new_day.workout = params[:workout]
       new_day.calorie = params[:calories]
-      
       logged_in_user = User.find_by ({ :username => session[:username] })
       new_day.user_id = logged_in_user.id
 
@@ -48,9 +51,7 @@ class DayController < ApplicationController
       }
 
       redirect '/days'
-
-
-    end
+      end
 
     get '/:id' do
       @day = Day.find params[:id]
@@ -64,8 +65,6 @@ class DayController < ApplicationController
 
     put '/:id' do
       @day = Day.find params[:id]
-      
-      
       @day.time_awake = params[:time]
       @day.task = params[:task]
       @day.food = params[:food]
@@ -76,6 +75,23 @@ class DayController < ApplicationController
 
       redirect '/days'
 
-end
+    end
+  
+  delete '/:id' do
+    day = Day.find params[:id]
+    day.destroy
+
+    session[:message] = {
+      success: true, 
+      status: "good",
+      message: "Successfully delted day ##{day.id}"
+    }
+
+    redirect '/days'
+
+
+
+  end
+
 
 end
