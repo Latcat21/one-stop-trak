@@ -16,7 +16,7 @@ CREATE TABLE days(
   task VARCHAR(255),
   food VARCHAR(255),
   workout VARCHAR(255),
-  calorie NUMERIC NOT NULL DEFAULT 'NaN',
+  calorie BIGINT,
   user_id INTEGER REFERENCES users(id)
 
 );

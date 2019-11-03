@@ -35,9 +35,8 @@ class DayController < ApplicationController
       new_day.food = params[:foods]
       new_day.workout = params[:workout]
       new_day.calorie = params[:calories]
-
+      
       logged_in_user = User.find_by ({ :username => session[:username] })
-
       new_day.user_id = logged_in_user.id
 
       new_day.save
@@ -58,10 +57,25 @@ class DayController < ApplicationController
       erb :day_show
     end
 
-    
+    get '/:id/edit' do
+      @day = Day.find params[:id]
+      erb :edit_day
+    end
 
+    put '/:id' do
+      @day = Day.find params[:id]
+      
+      
+      @day.time_awake = params[:time]
+      @day.task = params[:task]
+      @day.food = params[:food]
+      @day.workout = params[:workout]
+      @day.calorie = params[:calorie]
 
-    
+      @day.save
 
+      redirect '/days'
+
+end
 
 end
