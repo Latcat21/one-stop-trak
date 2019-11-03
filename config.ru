@@ -10,6 +10,10 @@ require './controllers/DayController'
 require './models/UserModel'
 require './models/DayModel'
 require './models/AverageModel'
+require './models/CalorieModel'
+require './models/TaskModel'
+require './models/FoodModel'
+require './models/WorkoutModel'
 
 map ('/'){
   run ApplicationController
