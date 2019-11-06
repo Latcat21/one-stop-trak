@@ -65,7 +65,6 @@ class DayController < ApplicationController
 
     put '/:id' do
       @day = Day.find params[:id]
-      @day.time_awake = params[:time]
       @day.task = params[:task]
       @day.food = params[:food]
       @day.workout = params[:workout]

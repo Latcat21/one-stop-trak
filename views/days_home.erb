@@ -5,9 +5,8 @@
 <h3>Here are you days</h3>
 <ul>
 <% @days.each do | day |%>
-<li><%=day.name %>
+<li><%=day.name %><br>
 <a class="btn btn-success" href="/days/<%= day.id%>">View</a>
-
 <form action="/days/<%=day.id %>" method="POST" >
 <input type="hidden" name="_method" value="DELETE">
 <button class="btn btn-danger">DELETE</button>

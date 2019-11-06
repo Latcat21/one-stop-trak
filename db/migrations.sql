@@ -11,8 +11,8 @@ CREATE TABLE users(
 
 CREATE TABLE days(
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255),
-  time_awake VARCHAR(255),
+  name DATE,
+  time_awake TIME WITH TIME ZONE,
   task VARCHAR(255),
   food VARCHAR(255),
   workout VARCHAR(255),

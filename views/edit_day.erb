@@ -1,27 +1,17 @@
-<<<<<<< HEAD
 <div class="container">
 <div class="day-form bg-white rounded shadow-lg">
 <h1 class=" text-secondary display-3">Edit Your Day</h1>
 <form  action="/days/<%=@day.id%>" method="POST">
 <input type="hidden" name="_method" value="PUT" />
-
-
 <div class="form-group">
-<label>Time you woke up</label>
-<input 
-class="form-control"
-type="text" 
-name="time"
-value="<%=@day.time_awake %>" 
- />
- </div>
- <div class="form-group">
  <label>Enter your days tasks seperated by commas</label>
-<input class="form-control" name="task" value="<%=@day.task %>" />
+<input class="form-control" name="task" value="<%=@day.task %>"
+rows=4 />
 </div>
 <div class="form-group">
 <label>Enter in the foods you've eaten seperated by commas</label>
-<input class="form-control" name="food" value="<%=@day.food %>" />
+<input class="form-control" name="food" value="<%=@day.food %>"
+rows=4 />
 </div>
 <div class="form-group">
 <label>Enter in your workouts seperated by commas</label>
@@ -29,36 +19,11 @@ value="<%=@day.time_awake %>"
 </div>
 <div class="form-group">
 <label>Estimate your total calories</label>
-<input name="calorie" class="form-control" value="<%=@day.calorie %>" />
+<input name="calorie" class="form-control" value="<%=@day.calorie %>"
+ />
 </div>
 <button class="btn btn-primary" >Update Day</button>
 
 <form>
 </div>
 </div>
-=======
-<H1>edit your day</h1>
-
-
-
-<form  action="/days/<%= @day.id %> %" method="POST">
-<input type="hidden" name="_method" value="PUT" />
-<input 
-type="text" 
-name="name" 
-placeholder="name your day"
-value="<%=@day.name %> "/><br>
-<input 
-type="text" 
-name="time" 
-placeholder="time you woke up"
-value="<%=@day.time_awake %> " /><br>
-
-<textarea name="tasks"
-value="<%=@day.task%> "></textarea><br>
-<textarea name="foods" value="<%=@day.food%> " ></textarea><br>
-<textarea name="workout" value="<%=@day.workout%> "></textarea><br>
-<textarea name="calories" value="<%=@day.calorie%> "></textarea><br>
-<button>Edit Day</button>
-<form>
->>>>>>> 1c1503ef4bcb7dab21bf3817ffff7c984f6ce7d6
