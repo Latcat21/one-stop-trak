@@ -19,12 +19,17 @@ class DayController < ApplicationController
     get('/') do
       user = User.find_by ({ :username => session[:username] })
       @days = user.days
-      all_days = Day.all
-      puts '---------------'
-      puts  all_days
-      puts 'all days ^^^^^^^^'
+    # puts "all the days------"
+      # all_days = user.average(:calories)
+      # puts "all the days ^^^^^^^"
+      # puts "all the users"
+      # all_calories = User.average(:calorie)
+      # puts all_users
+
+      # puts "^^^^^^^^^^^^^^^^"
+      # @avg_calories = @days.all.average(:calories)
       
-      erb :days_home
+        erb :days_home
     end
     
     get('/new') do

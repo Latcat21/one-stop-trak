@@ -1,0 +1,43 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.home-section{
+  height: 90vh;
+  background-image:  linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)) ,url(../images/home-section.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+
+}
+.home-section-header{
+ margin-top: 150px;
+ 
+}
+h1{
+  color: white;
+  font-size: 50px;
+  letter-spacing: 2px;
+  padding-bottom: 20px;
+}
+.heading-span{
+  text-transform: uppercase;
+  color: orange;
+
+}
+
+.sign-up{
+  background-color: orange;
+  text-transform: uppercase;
+  color: white;
+  padding: 18px;
+  border-radius: 25px;
+}
