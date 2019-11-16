@@ -10,7 +10,6 @@ CREATE TABLE users(
   age NUMERIC NOT NULL DEFAULT 'NaN',
   height NUMERIC NOT NULL DEFAULT 'NaN',
   weight NUMERIC NOT NULL DEFAULT 'NaN',
-  bmr NUMERIC,
   password_digest VARCHAR(60)
 );
 
