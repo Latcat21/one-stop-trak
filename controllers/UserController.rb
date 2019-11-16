@@ -64,11 +64,6 @@ class UserController < ApplicationController
       # create user 
       user = User.new
       user.username = params[:username]
-
-      # HEY: if has_secure_password is specified in User model
-      # .password= setter method will automatically encrypt
-      # the password for you and store it in a field on the 
-      # User model called "password_digest"
       user.password = params[:password]
 
       user.save

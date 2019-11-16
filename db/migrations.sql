@@ -6,6 +6,11 @@ CREATE DATABASE one_stop;
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(32),
+  gender VARCHAR(32),
+  age NUMERIC NOT NULL DEFAULT 'NaN',
+  height NUMERIC NOT NULL DEFAULT 'NaN',
+  weight NUMERIC NOT NULL DEFAULT 'NaN',
+  bmr NUMERIC,
   password_digest VARCHAR(60)
 );
 

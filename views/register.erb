@@ -1,7 +1,54 @@
-<h2>Sign Up Here</h2>
+<div class="container my-5 mt-5">
+<h2>Please fill out the folling information to create your account</h2>
+<div class="registration shadow-lg bg-white rounded">
 <form action="/users/register" method="POST">
-<input type="text" name="username" placeholder="username " />
-<input type="text" name="password" placeholder="password " />
+<div class="form-group">
+<input type="text"
+ name="username" 
+ placeholder="username" 
+ class="form-control"
+ required />
+</div>
+<div class="form-group">
+<input type="text"
+ name="password"
+ placeholder="password" 
+ class="form-control" 
+ required/>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option name="male">Male</option>
+    <option name="female">Female</option>
+    </select>
+</div>
+<div class="form-group">
+<input type="text"
+ name="height"
+placeholder="height in inches" 
+class="form-control"
+required/>
+</div>
+<div class="form-group">
+<input type="text"
+ name="height"
+placeholder="height in inches" 
+class="form-control"
+required/>
+</div>
+<div class="form-group">
+<input type="text"
+ name="weight"
+placeholder="weight in lbs" 
+class="form-control"
+required/>
+</div>
+
 <button>Register</button>
 </form>
 <small>Already have an account?<a href="/users/register">Login here</a></small>
+</div>
+</div>
