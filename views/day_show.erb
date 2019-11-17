@@ -1,32 +1,75 @@
-<h1>Your Day</h1>
-<h2><%= @day.name %></h2>
-<h2>You woke up at</h2>
-<h2><%= @day.time_awake %></h2>
-<h2>Your Tasks</h2>
+<div class="container">
+  <div class='day-show mt-5 p-5 bg-white rounded'>
+    <div class="row">
+      <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8">
+        <div class="card m-3">
+          <div class="card-header bg-light text-center">
+            <h3 class="card-title text-center">Your Tasks</h3>
+             <i class="fas fa-pencil-alt py-2 text-center"></i> 
+          </div>
+            <ul class="list-group list-group-flush">
+              <%@day.task.split("," ) do |task|%>
+                <li class="list-group-item text-center"><%=task%></li>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+          <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="card m-3">
+              <div class="card-header bg-light text-center">
+                <h3 class="card-title text-center">Your workout</h3>
+                  <i class="fas fa-utensils py-2 text-center"></i>
+              </div>
+                <%@day.workout.split("," ) do |workout|%>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-center"><%=workout%></li>
+                </ul>
+                <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+  <div class="container">   
+    <div class="row">
+      <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8">
+        <div class="card m-3">
+          <div class="card-header bg-light text-center">
+            <h3 class="card-title text-center">Foods you have eaten</h3>
+              <i class="fas fa-utensils py-2 text-center"></i>
+            </div>
+              <%@day.food.split("," ) do |food|%>
+                <ul>
+                  <li class="list-group-item text-center"><%=food%></li>
+                </ul>
+              <%end%>
+          </div>
+        </div>
+      </div>
+     <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="card m-3">
+              <div class="card-header bg-light text-center">
+                <h3 class="card-title text-center">Your Estimated calories</h3>
+                  <i class="fas fa-utensils py-2 text-center"></i>
+              </div>
+                <%@day.workout.split("," ) do |workout|%>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-center"><%=@day.calorie%></li>
+                </ul>
+                <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+    
 
-<%@day.task.split("," ) do |task|%>
-<ul>
-<li><%=task%></li>
-</ul>
 
-<%end%>
 
-<h2>Foods you have eaten</h2>
-<%@day.food.split("," ) do |food|%>
-<ul>
-<li><%=food%></li>
-</ul>
 
-<%end%>
 
-<h2>Your workout</h2>
-<%@day.workout.split("," ) do |workout|%>
-<ul>
-<li><%=workout%></li>
-</ul>
-
-<%end%>
-<h2>Your Estimated calories</h2>
-<h3><%=@day.calorie%></h3>
 
 <a class="btn btn-secondary" href="/days/<%=@day.id %>/edit">Edit your day</a>
+
+</div>
+</div>

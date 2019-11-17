@@ -4,7 +4,7 @@ require 'sinatra/base'
 require './controllers/ApplicationController'
 require './controllers/UserController'
 require './controllers/DayController'
-require '.controllers/ForumController'
+require './controllers/ForumController'
 
 
 #models

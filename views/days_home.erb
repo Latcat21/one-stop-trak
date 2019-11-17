@@ -1,10 +1,11 @@
 <div class="container pt-5 mt-5">
-<h1>Welcome to your account</h2>
-<h4>Your BMR is.. <%= @bmr %>
-<h2>Here are all your days</h1>
-<a href="/days/new">Start a new day</a>
+<div class="days bg-light">
+<h1 class="text-center display-5">Welcome to your account</h2>
+<h4 class="text-center">Your BMR is.. <%= @bmr %> <br>
 
-<h3>Here are you days</h3>
+<a href="/days/new" class="btn btn-primary m-4">Start a new day</a>
+
+<h3 class="text-center">Here are you days</h3>
 <ul>
 <% @days.each do | day |%>
 <li><%=day.name %><br>
@@ -15,4 +16,5 @@
 </li>
 </ul>
 <%end%>
+</div>
 </div>

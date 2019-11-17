@@ -31,6 +31,7 @@ CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   post VARCHAR,
   like VARCHAR(255),
+  comment_id INTEGER REFERENCES comments(id),
   user_id INTEGER REFERENCES users(id)
 );
 
