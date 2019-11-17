@@ -7,9 +7,10 @@ CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(32),
   gender VARCHAR(32),
-  age NUMERIC NOT NULL DEFAULT 'NaN',
-  height NUMERIC NOT NULL DEFAULT 'NaN',
-  weight NUMERIC NOT NULL DEFAULT 'NaN',
+  age INTEGER,
+  height INTEGER,
+  weight INTEGER,
+  bmr INTEGER,
   password_digest VARCHAR(60)
 );
 

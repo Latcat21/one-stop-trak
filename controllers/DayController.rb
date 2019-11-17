@@ -19,16 +19,34 @@ class DayController < ApplicationController
     get('/') do
       user = User.find_by ({ :username => session[:username] })
       @days = user.days
-    # puts "all the days------"
-      # all_days = user.average(:calories)
-      # puts "all the days ^^^^^^^"
-      # puts "all the users"
-      # all_calories = User.average(:calorie)
-      # puts all_users
 
-      # puts "^^^^^^^^^^^^^^^^"
-      # @avg_calories = @days.all.average(:calories)
+      gender = user.gender
+      weight = user.weight
+      age = user.age
+      height = user.height
       
+     
+      if gender == "male"
+        @bmr = 66.47 + (6.24 * weight) + (12.7 * height) - (6.755 * age)
+      else 
+        @bmr = 655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age)
+      end
+
+      puts '================='
+      puts gender
+      puts "^^^^^^^gender^^^^^^^^^^^"
+      puts '==============='
+      puts  weight 
+      puts "^^^^^^weight^^^^^^^^^^^^^"
+      puts '==============='
+      puts  age
+      puts "^^^^^^age^^^^^^^^^^^^^"
+
+      puts '==============='
+      puts  height
+      puts "^^^^^^height^^^^^^^^^^^^^"
+
+
         erb :days_home
     end
     

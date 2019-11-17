@@ -65,11 +65,11 @@ class UserController < ApplicationController
       user = User.new
       user.username = params[:username]
       user.password = params[:password]
-      user.gender = params[:gender]
+      user.age = params[:age]
+      user.weight = params[:weight]
       user.height = params[:height]
-      user.weight = params[:height]
-
-
+      user.gender = params[:gender]
+      
       user.save
 
       # add stuff to session: loggedin, username, message
