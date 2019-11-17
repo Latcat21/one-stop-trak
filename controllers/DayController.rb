@@ -19,7 +19,6 @@ class DayController < ApplicationController
     get('/') do
       user = User.find_by ({ :username => session[:username] })
       @days = user.days
-
       gender = user.gender
       weight = user.weight
       age = user.age
@@ -32,22 +31,7 @@ class DayController < ApplicationController
         @bmr = 655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age)
       end
 
-      puts '================='
-      puts gender
-      puts "^^^^^^^gender^^^^^^^^^^^"
-      puts '==============='
-      puts  weight 
-      puts "^^^^^^weight^^^^^^^^^^^^^"
-      puts '==============='
-      puts  age
-      puts "^^^^^^age^^^^^^^^^^^^^"
-
-      puts '==============='
-      puts  height
-      puts "^^^^^^height^^^^^^^^^^^^^"
-
-
-        erb :days_home
+      erb :days_home
     end
     
     get('/new') do
@@ -95,7 +79,7 @@ class DayController < ApplicationController
 
       @day.save
 
-      redirect '/days'
+      redirect '/days/'
 
     end
   
