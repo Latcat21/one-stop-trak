@@ -18,11 +18,28 @@ CREATE TABLE days(
   id SERIAL PRIMARY KEY,
   name DATE,
   time_awake TIME WITH TIME ZONE,
-  task VARCHAR(255),
-  food VARCHAR(255),
-  workout VARCHAR(255),
+  task VARCHAR,
+  food VARCHAR,
+  workout VARCHAR,
   calorie BIGINT,
+  img VARCHAR(255),
   user_id INTEGER REFERENCES users(id)
 
+);
+
+CREATE TABLE posts(
+  id SERIAL PRIMARY KEY,
+  post VARCHAR,
+  name VARCHAR(32),
+  img VARCHAR(255),
+  like VARCHAR(255),
+  user_id INTEGER REFERENCES users(id)
+);
+
+CREATE TABLE comments(
+  id SERIAL PRIMARY KEY,
+  comment VARCHAR,
+  img VARCHAR(255),
+  user_id INTEGER REFERENCES users(id)
 );
 
