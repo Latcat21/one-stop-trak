@@ -1,20 +1,40 @@
 <div class="container pt-5 mt-5">
-<div class="days bg-light">
+<div class="days">
 <h1 class="text-center display-5">Welcome to your account</h2>
 <h4 class="text-center">Your BMR is.. <%= @bmr %> <br>
 
 <a href="/days/new" class="btn btn-primary m-4">Start a new day</a>
 
 <h3 class="text-center">Here are you days</h3>
-<ul>
+<div class="row">
+<div class="card m-3">
+<div class="card-header bg-dark">
 <% @days.each do | day |%>
-<li><%=day.name %><br>
-<a class="btn btn-success" href="/days/<%= day.id%>">View</a>
+<h4 class="text-center text-white"><%=day.name %></h3><br>
+</div> 
+<div class="card-body">
+<ul class="list-group list-group-flush">
+    <li class="list-group-item text-center">Wake up time: <%=day.time_awake%></li>
+</ul>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item text-center">Calories: <%=day.calorie%></li>
+</ul>
+<a  class="btn btn-success m-2" href="/days/<%= day.id%>">View</a>
 <form action="/days/<%=day.id %>" method="POST" >
 <input type="hidden" name="_method" value="DELETE">
 <button class="btn btn-danger">DELETE</button>
 </li>
 </ul>
-<%end%>
+<%end%> 
+  </div>
+             
 </div>
+
 </div>
+
+
+</div>
+</div> 
+
+
+

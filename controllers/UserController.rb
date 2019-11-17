@@ -10,10 +10,7 @@ class UserController < ApplicationController
 
     # find user by username
     user = User.find_by username: params[:username]
-
-    # pp user # help us as devs see whether its a username or pw issue
-    # or you could use binding.pry
-
+    
     pw = params[:password]
 
     # if the user exists and password is correct --
@@ -56,7 +53,7 @@ class UserController < ApplicationController
 
     # check if user exists 
     user = User.find_by username: params[:username]
-          # User.find_by({ :username => params[:username] })
+          
 
     # if user doesn't exist
     if !user
@@ -65,6 +62,8 @@ class UserController < ApplicationController
       user = User.new
       user.username = params[:username]
       user.password = params[:password]
+      password_two = params[:password_two]
+     
       user.age = params[:age]
       user.weight = params[:weight]
       user.height = params[:height]
