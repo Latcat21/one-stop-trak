@@ -9,8 +9,8 @@
 <label >Date:</label>
 
 <input type="date" class="form-control" name="name"
-       value="2019-11-04"
-       min="2019-11-04" max="2022-12-31">
+       value="<%= Date.today %> "
+       min="<%= Date.today %> %" max="2022-12-31">
 <br>
 <label>Time you woke up</label>
 <input 
@@ -38,6 +38,6 @@ name="time"
 </div>
 <button class="btn btn-primary" >Create Day</button>
 
-<form>
+</form>
 </div>
 </div>
