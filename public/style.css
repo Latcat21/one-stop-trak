@@ -2,17 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
-
-}
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-  
-
+  }
 .home-section{
   height: 90vh;
   background-image:  linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)) ,url(../images/home-section.jpg);
@@ -24,8 +14,6 @@
 }
 .home-section-header{
  margin-top: 150px;
-
- 
 }
 .home-section-heading{
   color: white;
@@ -36,11 +24,51 @@
 .heading-span{
   text-transform: uppercase;
   color: orange;
-
 }
-/* .tracker-section-heading{
-  font-size: 300px;
-  color: #000;
-} */
-
+.days-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: blue;
+}
+.day-card{
+  border: 2px solid #000;
+  float: left;
+  width: 200px;
+  margin: 0px 5px;
+}
+.day-card-heading{
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+.day-card-body{
+  border-bottom: 3px solid #555;
+  font-size: 15px;
+  padding: 5px;
+  text-align:center;
+  font-weight: bold;
+}
+.day-card-buttons{
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+.day-card-buttons a, button{
+  float: left;
+  padding: 2px 17px;
+}
+.day-card-buttons button{
+  border: none;
+  background-color: red;
+  color: #fff;
+  margin: 0px 5px;
+}
+.day-card-buttons a{
+  background-color: green;
+  color: #fff;
+  text-transform: uppercase;
+}
 
