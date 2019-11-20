@@ -30,7 +30,7 @@ CREATE TABLE days(
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
-  post VARCHAR,
+  content VARCHAR,
   like_id INTEGER REFERENCES likes (id),
   comment_id INTEGER REFERENCES comments(id),
   user_id INTEGER REFERENCES users(id)
@@ -43,5 +43,5 @@ CREATE TABLE comments(
 );
 
 CREATE TABLE likes(
-  id SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY
 );

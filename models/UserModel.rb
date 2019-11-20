@@ -3,5 +3,4 @@ class User < ActiveRecord::Base
   has_many :days
   has_many :posts
   has_many :comments
-  has_many :likes
-end
+  end
