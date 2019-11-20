@@ -6,6 +6,7 @@ CREATE DATABASE one_stop;
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(32),
+  img VARCHAR(255),
   gender VARCHAR(32),
   age INTEGER,
   height INTEGER,
@@ -22,15 +23,15 @@ CREATE TABLE days(
   food VARCHAR,
   workout VARCHAR,
   calorie BIGINT,
-  img VARCHAR(255),
   user_id INTEGER REFERENCES users(id)
 
 );
 
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
+  title VARCHAR(255),
   post VARCHAR,
-  like VARCHAR(255),
+  like_id INTEGER REFERENCES likes (id),
   comment_id INTEGER REFERENCES comments(id),
   user_id INTEGER REFERENCES users(id)
 );
@@ -41,3 +42,6 @@ CREATE TABLE comments(
   user_id INTEGER REFERENCES users(id)
 );
 
+CREATE TABLE likes(
+  id SERIAL PRIMARY KEY,
+);
