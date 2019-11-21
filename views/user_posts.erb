@@ -1,13 +1,12 @@
-<div class="container mt-5 py-5">
-<h2>Here are all the posts </h2>
+<div class="conatiner mt-5 py-5">
 
-
+<h1>Here are all Your posts</h1>
 
 <% @posts.each do |post|%>
 <div class="card">
 <div class="card-heading">
 <h2><%=post.title%><h2>
-<h5>By: <%=post.user_id%>
+
 <div class="card-body">
 <p><%=post.content%></p>
 </div>
@@ -17,3 +16,6 @@
 
 
 <% end %>
+<h4>End of your posts</h4>
+
+</div>
