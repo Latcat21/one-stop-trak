@@ -24,6 +24,7 @@ class ForumController < ApplicationController
     redirect '/posts'
     end
 
+    
     get ('/your-posts') do
       
       user = User.find_by ({ :username => session[:username] })
@@ -31,5 +32,12 @@ class ForumController < ApplicationController
 
       erb :user_posts
     end
+
+   get  '/:id' do
+      @post = Post.find params[:id]
+      erb :post_show
+
+   end
+
 
 end

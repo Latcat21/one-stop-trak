@@ -10,6 +10,11 @@
 <div class="card-body">
 <p><%=post.content%></p>
 </div>
+<a href="/posts/<%= post.id%>">View</a>
+        <form action="/posts/<%=post.id %>" method="POST" >
+        <input type="hidden" name="_method" value="DELETE">
+        <button>DELETE</button>
+          </form>
 <div>
 
 </div>
