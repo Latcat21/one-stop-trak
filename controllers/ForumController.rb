@@ -22,7 +22,7 @@ class ForumController < ApplicationController
     new_post.save
     
     redirect '/posts'
-    end
+  end
 
     
     get ('/your-posts') do
@@ -33,11 +33,30 @@ class ForumController < ApplicationController
       erb :user_posts
     end
 
-   get  '/:id' do
+      get  '/:id' do
+
       @post = Post.find params[:id]
       erb :post_show
 
-   end
+      end
+
+      delete '/:id' do
+        post = Post.find params[:id]
+
+        post.destroy
+
+        session[:message] = {
+          success: true,
+          status: "good",
+          message: "Successfully destroyed post ##{post.id}"
+        }
+
+        redirect "/days"
+        
+
+      end
+
+  
 
 
 end
