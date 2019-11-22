@@ -6,6 +6,24 @@
 
 <p><%=@post.content%></p>
 
+<h2>Comments are below</h2>
+<p><%= @post.comments%></p>
+
+ 
+
+
+
+<form  action="/posts/<%=@post.id %>" method="POST">
+<div class="form-group">
+<label>Comment</label>
+<textarea class="form-control" name="comment" rows=5></textarea>
+</div>
+
+<button class="btn btn-primary" >Submit</button>
+
+</form>
+
+</form>
 
 </div>
 

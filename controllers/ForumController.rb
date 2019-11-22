@@ -34,8 +34,11 @@ class ForumController < ApplicationController
     end
 
       get  '/:id' do
-
+      
       @post = Post.find params[:id]
+      puts "==============="
+      puts @post.comment
+      puts "^^^^^^^^^comments^^^^^^^^^^^^^^^^^"
       erb :post_show
 
       end
@@ -55,6 +58,25 @@ class ForumController < ApplicationController
         
 
       end
+
+      post '/:id' do
+        found_post = Post.find params[:id]
+        new_comment = Comment.new
+        new_comment.comment = params[:comment]
+        found_post.comment_id = new_comment.id
+
+        logged_in_user = User.find_by ({ :username => session[:username] })
+
+        new_comment.user_id = logged_in_user
+          
+        new_comment.save
+
+        redirect '/posts'
+
+        
+      end
+
+      
 
   
 

@@ -19,12 +19,14 @@ class DayController < ApplicationController
     get('/') do
       user = User.find_by ({ :username => session[:username] })
       @days = user.days
+      @avg_cal = user.days.all.average(:calorie)
+     
+      
+      # bmr calculation
       gender = user.gender
       weight = user.weight
       age = user.age
       height = user.height
-      
-     
       if gender == "male"
         @bmr = 66.47 + (6.24 * weight) + (12.7 * height) - (6.755 * age)
       else 
@@ -94,9 +96,6 @@ class DayController < ApplicationController
     }
 
     redirect '/days'
-
-
-
   end
 
 
