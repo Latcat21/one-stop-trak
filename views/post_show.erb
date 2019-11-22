@@ -7,13 +7,18 @@
 <p><%=@post.content%></p>
 
 <h2>Comments are below</h2>
-<p><%= @post.comments%></p>
+
+
+<% @post.comments.each do |comment|%>
+<h3><%=comment.comment%></h3>
+<% end %>
+
 
  
 
 
 
-<form  action="/posts/<%=@post.id %>" method="POST">
+<form  action="/posts/<%=@post.id %>/comments" method="POST">
 <div class="form-group">
 <label>Comment</label>
 <textarea class="form-control" name="comment" rows=5></textarea>

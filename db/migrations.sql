@@ -26,23 +26,24 @@ CREATE TABLE days(
   user_id INTEGER REFERENCES users(id)
 
 );
-CREATE TABLE likes(
-  id SERIAL PRIMARY KEY,
-  count INTEGER
-);
-
-CREATE TABLE comments(
-  id SERIAL PRIMARY KEY,
-  comment VARCHAR,
-  user_id INTEGER REFERENCES users(id)
-);
 
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   content VARCHAR,
-  like_id INTEGER REFERENCES likes (id),
-  comment_id INTEGER REFERENCES comments(id),
+  user_id INTEGER REFERENCES users(id)
+);
+
+CREATE TABLE likes(
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  post_id INTEGER REFERENCES posts(id)
+);
+
+CREATE TABLE comments(
+  id SERIAL PRIMARY KEY,
+  comment VARCHAR,
+  post_id INTEGER REFERENCES posts(id),
   user_id INTEGER REFERENCES users(id)
 );
 

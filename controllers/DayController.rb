@@ -19,6 +19,7 @@ class DayController < ApplicationController
     get('/') do
       user = User.find_by ({ :username => session[:username] })
       @days = user.days
+      # getting the average daily calories
       @avg_cal = user.days.all.average(:calorie)
      
       
