@@ -36,19 +36,19 @@ class ForumController < ApplicationController
       get  '/:id' do
       
       @post = Post.find params[:id]
-
-      puts "-------------"
-      puts @post.comments
-      puts "^^^^^^^^comments ^^^^^^^^^^^^^^"
-    
-      
       erb :post_show
 
       end
 
       delete '/:id' do
         post = Post.find params[:id]
-
+        # access the comments
+        comments = post.comments
+        #looping through the array to destroy the relationship
+        comments.each do |relation|
+          relation.destroy
+        end
+        #deleting the post
         post.destroy
 
         session[:message] = {
@@ -78,12 +78,5 @@ class ForumController < ApplicationController
 
         redirect '/posts'
 
-        
-      end
-
-      
-
-  
-
-
+    end
 end
