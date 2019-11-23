@@ -11,6 +11,7 @@ CREATE TABLE users(
   height INTEGER,
   weight INTEGER,
   bmr INTEGER,
+  img VARCHAR,
   password_digest VARCHAR(60)
 );
 
@@ -31,6 +32,7 @@ CREATE TABLE posts(
   title VARCHAR(255),
   author VARCHAR(255),
   content VARCHAR,
+  img VARCHAR,
   user_id INTEGER REFERENCES users(id)
 );
 

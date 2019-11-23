@@ -37,7 +37,7 @@
   margin: 0px 5px;
 }
 .day-card-heading{
-  background-color: #555;
+  background-color: #000;
   color: white;
   font-size: 16px;
   padding: 8px;
@@ -68,7 +68,10 @@
 }
 .day-card-buttons a{
   background-color: green;
-  color: #fff;
+  color: #000;
   text-transform: uppercase;
+}
+.like-btn{
+  border: none;
 }
 

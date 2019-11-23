@@ -45,6 +45,7 @@ class ForumController < ApplicationController
     logged_in_user = User.find_by ({ :username => session[:username] })
     new_post.author = logged_in_user.username
     new_post.user_id = logged_in_user.id
+    new_post.img = logged_in_user.img
     new_post.save
     
     redirect '/posts'

@@ -72,6 +72,7 @@ class UserController < ApplicationController
     user.weight = params[:weight]
     user.height = params[:height]
     user.gender = params[:gender]
+    user.img = params[:img]
     user.save
       
     session[:logged_in] = true
