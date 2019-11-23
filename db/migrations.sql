@@ -30,6 +30,8 @@ CREATE TABLE days(
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
+  author VARCHAR(255),
+  img VARCHAR(255),
   content VARCHAR,
   user_id INTEGER REFERENCES users(id)
 );
@@ -43,6 +45,7 @@ CREATE TABLE likes(
 CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
   comment VARCHAR,
+  author VARCHAR(255),
   post_id INTEGER REFERENCES posts(id),
   user_id INTEGER REFERENCES users(id)
 );

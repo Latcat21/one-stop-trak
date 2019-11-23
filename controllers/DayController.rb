@@ -21,8 +21,6 @@ class DayController < ApplicationController
       @days = user.days
       # getting the average daily calories
       @avg_cal = user.days.all.average(:calorie)
-     
-      
       # bmr calculation
       gender = user.gender
       weight = user.weight
@@ -33,7 +31,6 @@ class DayController < ApplicationController
       else 
         @bmr = 655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age)
       end
-
       erb :days_home
     end
     
@@ -51,7 +48,6 @@ class DayController < ApplicationController
       new_day.calorie = params[:calories]
       logged_in_user = User.find_by ({ :username => session[:username] })
       new_day.user_id = logged_in_user.id
-
       new_day.save
 
       session[:message] = {
@@ -59,7 +55,6 @@ class DayController < ApplicationController
         status: "good",
         message: "Successfull created day ##{new_day.id}"
       }
-
       redirect '/days'
       end
 
@@ -79,14 +74,13 @@ class DayController < ApplicationController
       @day.food = params[:food]
       @day.workout = params[:workout]
       @day.calorie = params[:calorie]
-
       @day.save
-
+  
       redirect '/days/'
 
     end
   
-  delete '/:id' do
+    delete '/:id' do
     day = Day.find params[:id]
     day.destroy
 
