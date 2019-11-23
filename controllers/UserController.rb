@@ -48,7 +48,6 @@ class UserController < ApplicationController
     user = User.new
     user.username = params[:username]
     user.password = params[:password]
-    user.img = params[:img]
     user.age = params[:age]
     user.weight = params[:weight]
     user.height = params[:height]

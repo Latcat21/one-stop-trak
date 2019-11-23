@@ -6,7 +6,6 @@ CREATE DATABASE one_stop;
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(32),
-  img VARCHAR(255),
   gender VARCHAR(32),
   age INTEGER,
   height INTEGER,
@@ -31,7 +30,6 @@ CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   author VARCHAR(255),
-  img VARCHAR(255),
   content VARCHAR,
   user_id INTEGER REFERENCES users(id)
 );

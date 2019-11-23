@@ -16,7 +16,6 @@ class ForumController < ApplicationController
     new_post.content = params[:content]
     logged_in_user = User.find_by ({ :username => session[:username] })
     new_post.author = logged_in_user.username
-    new_post.img = logged_in_user.img
     new_post.user_id = logged_in_user.id
     new_post.save
     
@@ -36,6 +35,8 @@ class ForumController < ApplicationController
       get  '/:id' do
       # grabbing all the posts
       @post = Post.find params[:id]
+      #find how many likes are on that post
+      @likes = @post.likes.count
       erb :post_show
 
       end
@@ -62,6 +63,18 @@ class ForumController < ApplicationController
       end
 
       post '/:id/comments' do
+        #only logged in users can comment on posts
+        if !session[:logged_in]
+          #message
+          session[:message] = {
+            success: false,
+            status: "neutral",
+            message: "You must be logged in to do that"
+          }
+          #redirect
+          redirect '/users/login'
+        end
+    
         #grabbing the post by Id
         found_post = Post.find params[:id]
         #creating a new comment
@@ -80,6 +93,36 @@ class ForumController < ApplicationController
         new_comment.save
         #redirecting to all the posts
         redirect '/posts'
+
+    end
+
+    post '/:id/likes' do
+      # making it so only logged in users can like posts
+      if !session[:logged_in]
+        #message
+        session[:message] = {
+          success: false,
+          status: "neutral",
+          message: "You must be logged in to do that"
+        }
+        #redirect
+        redirect '/users/login'
+      end
+      #grabbing the post by Id
+      found_post = Post.find params[:id]
+      #creating a new like
+      new_like = Like.new
+      #assignged the post id to the like id
+      new_like.post_id = found_post.id
+      #finding the logged in user
+      logged_in_user = User.find_by ({ :username => session[:username] })
+      #storing the user id to the comment
+      new_like.user_id = logged_in_user.id
+      #saving the like
+      new_like.save
+      # redirecting to the all posts
+      redirect '/posts'
+
 
     end
 end

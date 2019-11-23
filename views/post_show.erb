@@ -2,9 +2,11 @@
 
 
 <h2><%=@post.title%><h2>
+<p>by <%=@post.author%></p>
 
 
 <p><%=@post.content%></p>
+
 
 <h2>Comments are below</h2>
 
@@ -16,8 +18,11 @@
 
  
 
-
-
+<form  action="/posts/<%=@post.id %>/likes" method="POST">
+<div class="form-group">
+<button><i class="fas fa-thumbs-up"></i><span> <%= @likes %></span></button><br>
+</div>
+</form>
 <form  action="/posts/<%=@post.id %>/comments" method="POST">
 <div class="form-group">
 <label>Comment</label>
