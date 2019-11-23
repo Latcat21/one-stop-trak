@@ -51,7 +51,7 @@ class UserController < ApplicationController
     if user.password.length <= 8
       session[:logged_in] = false
       session[:message] = {
-      success: true,
+      success: false,
       status: "bad",
       message: "please enter a password that is 8 or more characters"
       }
@@ -61,7 +61,7 @@ class UserController < ApplicationController
     if user.password != params[:passwordtwo]
       session[:logged_in] = false
       session[:message] = {
-      success: true,
+      success: false,
       status: "bad",
       message: "Passwords do not match up please try again"
       }

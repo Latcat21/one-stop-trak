@@ -35,13 +35,42 @@ class DayController < ApplicationController
     end
     
     get('/new') do
+    # making it so only logged in users can like posts
+    if !session[:logged_in]
+    #message
+      session[:message] = {
+        success: false,
+        status: "neutral",
+        message: "You must be logged in to do that"
+      }
+      #redirect
+      redirect '/users/login'
+    end
       erb :new_day
     end
     
     post('/new') do
       new_day = Day.new
       new_day.name = params[:name]
+      if !new_day.name
+        session[:message] = {
+        success: false,
+        status: "bad",
+        message: "Please fill out the forms"
+        }
+        # redirect 
+        redirect '/days'
+      end
       new_day.time_awake = params[:time]
+      if !new_day.time_awake
+      session[:message] = {
+      success: false,
+      status: "bad",
+      message: "Please fill out the forms"
+      }
+      # redirect 
+      redirect '/days'
+    end
       new_day.task = params[:tasks]
       new_day.food = params[:foods]
       new_day.workout = params[:workout]
@@ -50,11 +79,6 @@ class DayController < ApplicationController
       new_day.user_id = logged_in_user.id
       new_day.save
 
-      session[:message] = {
-        success: true,
-        status: "good",
-        message: "Successfull created day ##{new_day.id}"
-      }
       redirect '/days'
       end
 
@@ -83,12 +107,6 @@ class DayController < ApplicationController
     delete '/:id' do
     day = Day.find params[:id]
     day.destroy
-
-    session[:message] = {
-      success: true, 
-      status: "good",
-      message: "Successfully delted day ##{day.id}"
-    }
 
     redirect '/days'
   end

@@ -25,6 +25,23 @@ class ForumController < ApplicationController
     new_post = Post.new
     new_post.title = params[:title]
     new_post.content = params[:content]
+    if new_post.title == '' || new_post.content == ''
+    session[:message] = {
+      success: false,
+      status: "bad",
+      message: "please fill in the feilds"
+      }
+    redirect '/posts/new'
+    end
+
+    if new_post.content.length <= 20 
+      session[:message] = {
+      success: false,
+      status: "bad",
+      message: "please submit a longer poster"
+      }
+    redirect '/posts/new'
+    end
     logged_in_user = User.find_by ({ :username => session[:username] })
     new_post.author = logged_in_user.username
     new_post.user_id = logged_in_user.id
@@ -99,6 +116,15 @@ class ForumController < ApplicationController
         new_comment = Comment.new 
         #storing the inputs
         new_comment.comment = params[:comment]
+        if new_comment.comment == ''
+        session[:message] = {
+        success: false,
+        status: "bad",
+        message: "please fill in the feilds"
+        }
+        redirect '/posts'
+        end
+    
         #storing the post id's in the comment
         new_comment.post_id= found_post.id
         #finding the logged in user
@@ -140,7 +166,6 @@ class ForumController < ApplicationController
       new_like.save
       # redirecting to the all posts
       redirect '/posts'
-
 
     end
 end
