@@ -20,6 +20,9 @@
     <a href="/posts" class="nav-link">All Posts</a>
     </li>
     <li class="nav-item">
+    <a href="/posts/your-posts" class="nav-link">Your Posts</a>
+    </li>
+    <li class="nav-item">
     <a href="/days" class="nav-link">Account Home</a>
     </li>
     <li class="nav-item">
@@ -41,23 +44,32 @@
   </div>
 </nav>
 
+
+
+</header>
+
 <% if session[:message] %>
-<p class="message <%= session[:message][:status] %> ">
+<div class="sessions-msg mt-5 bg-danger pt-3 text-center">
+<h3 class="text-center ">
+<h3 class="message <%= session[:message][:status] %>"> </h3>
+</h3>
+<h4 class="text-white pb-3">
 <%= session[:message][:message] %>
-</p>
+</h4>
 <%
  end 
  session[:message] = nil 
  %>
-
-</header>
+ 
+ </div>
 <body>
-<%= yield %>
+
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
+    <%= yield %>
 </body>
 </html>

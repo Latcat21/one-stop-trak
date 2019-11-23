@@ -7,6 +7,17 @@ class ForumController < ApplicationController
   end
 
   get ('/new') do
+    # making it so only logged in users can like posts
+    if !session[:logged_in]
+    #message
+    session[:message] = {
+      success: false,
+      status: "neutral",
+      message: "You must be logged in to do that"
+          }
+      #redirect
+    redirect '/users/login'
+    end
     erb :new_post
   end
 
@@ -49,6 +60,13 @@ class ForumController < ApplicationController
         comments.each do |relation|
           relation.destroy
         end
+
+        #accessing the likes
+        likes = post.likes
+        #looping through the array to destroy the relationship
+        likes.each do |relation|
+          relation.destroy
+        end
         #deleting the post
         post.destroy
         #updating the sessiongs
@@ -86,7 +104,7 @@ class ForumController < ApplicationController
         #finding the logged in user
         logged_in_user = User.find_by ({ :username => session[:username] })
         #storing the logged in users name to the comment
-        new_comment.author = logged_in_user.author
+        new_comment.author = logged_in_user.username
         #storing the user id to the comment
         new_comment.user_id = logged_in_user.id
         #saving the new comment

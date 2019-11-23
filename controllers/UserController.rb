@@ -48,6 +48,26 @@ class UserController < ApplicationController
     user = User.new
     user.username = params[:username]
     user.password = params[:password]
+    if user.password.length <= 8
+      session[:logged_in] = false
+      session[:message] = {
+      success: true,
+      status: "bad",
+      message: "please enter a password that is 8 or more characters"
+      }
+      # redirect 
+      redirect '/users/register'
+    end
+    if user.password != params[:passwordtwo]
+      session[:logged_in] = false
+      session[:message] = {
+      success: true,
+      status: "bad",
+      message: "Passwords do not match up please try again"
+      }
+      # redirect 
+      redirect '/users/register'
+    end
     user.age = params[:age]
     user.weight = params[:weight]
     user.height = params[:height]
