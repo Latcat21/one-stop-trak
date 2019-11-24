@@ -1,26 +1,18 @@
-<div class="conatiner mt-5 py-5">
-
-<h1>Here are all Your posts</h1>
-
-<% @posts.each do |post|%>
-<div class="card">
-<div class="card-heading">
-<h2><%=post.title%><h2>
-
-<div class="card-body">
-<p><%=post.content%></p>
-</div>
-<a href="/posts/<%= post.id%>">View</a>
-        <form action="/posts/<%=post.id %>" method="POST" >
-        <input type="hidden" name="_method" value="DELETE">
-        <button>DELETE</button>
+<div class="container mt-5 py-5">
+  <h1 class="text-center my-4 border-bottom p-2">Here are all Your posts</h1>
+    <% @posts.each do |post|%>
+    <div class="row border-bottom border-left">
+    <div class="col-lg-4 my-3">
+      <h4><%=post.title%></h4><br>
+      </div>
+      <div class="col-lg-8">
+        <p><%=post.content%></p><br>
+          <a href="/posts/<%= post.id%>" class="btn btn-succes">View</a>
+          <form action="/posts/<%=post.id %>" method="POST" >
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger my-3">DELETE</button>
           </form>
-<div>
-
-</div>
-
-
-<% end %>
-<h4>End of your posts</h4>
-
-</div>
+        </div>
+      </div>
+      <%end%>
+  </div>
