@@ -70,6 +70,30 @@ class ForumController < ApplicationController
 
       end
 
+      get '/:id/edit' do
+      #finding the post
+      @post = Post.find params[:id]
+
+      erb :edit_post
+
+      end
+      
+      put '/:id' do
+        #finding the post
+        post = Post.find params[:id]
+        #updated it
+        post.title = params[:title]
+        post.content = params[:content]
+        #save it
+        post.save
+        #redirect
+        redirect '/posts'
+        
+      end
+
+ 
+
+
       delete '/:id' do
         post = Post.find params[:id]
         # access the comments
