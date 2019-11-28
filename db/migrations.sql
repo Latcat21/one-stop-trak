@@ -29,6 +29,7 @@ CREATE TABLE days(
 
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
+  category VARCHAR,
   title VARCHAR(255),
   author VARCHAR(255),
   content VARCHAR,
