@@ -1,12 +1,17 @@
 <div class="container pt-5 mt-5">
   <h1 class="text-center display-5">Welcome to your account</h2>
-      <h4 class="text-center">Your BMR is.. <%= @bmr %> <br>
-      <h4 class="text-center">You average  <%=@avg_cal%> calories a day</h4>
+      <h4 class="text-center">Your BMR is: <%= @bmr %> calories </h4>
+      <h4 class="text-center">Loose one Lbs a week eat <%= @one_pound_week %> calories</h4>
+       <h4 class="text-center">Loose two Lbs a week eat <%= @two_pound_week %> calories</h4>
+      <h4 class="text-center">You average:  <%=@avg_cal%> calories a day</h4>
 
   <h5 class="text-center">
         <a href="/days/new" class="btn btn-primary m-4">Start a new day</a>
         <a href="/posts/new" class="btn btn-success">Start A New Post here</a>
+
+    
         </h5>
+
   </div> 
   <div class="days-container">
     <% @days.each do | day |%>

@@ -26,12 +26,24 @@ class DayController < ApplicationController
       weight = user.weight
       age = user.age
       height = user.height
+      one_pound = 3500 / 7
+      two_pound = 7000 / 7
+
       if gender == "male"
         @bmr = 66.47 + (6.24 * weight) + (12.7 * height) - (6.755 * age)
+        @one_pound_week = @bmr - one_pound
+        @two_pound_week = @bmr - two_pound
+
       else 
         @bmr = 655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age)
+        @one_pound_week = @bmr - one_pound
+        @two_pound_week = @bmr - two_pound
       end
-      erb :days_home
+       erb :days_home
+    end
+
+    get ('/bmr-info') do 
+      erb :brm_info
     end
     
     get('/new') do

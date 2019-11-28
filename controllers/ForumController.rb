@@ -6,6 +6,8 @@ class ForumController < ApplicationController
     erb :all_post
   end
 
+  
+
   get ('/new') do
     # making it so only logged in users can like posts
     if !session[:logged_in]
@@ -193,4 +195,6 @@ class ForumController < ApplicationController
       redirect '/posts'
 
     end
+
+
 end

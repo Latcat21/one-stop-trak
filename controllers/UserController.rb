@@ -97,6 +97,8 @@ class UserController < ApplicationController
       end
     end
 
+    
+
   
   get '/logout' do
     username = session[:username] # grab username before destroying session...
