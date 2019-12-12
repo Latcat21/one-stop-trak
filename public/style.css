@@ -24,7 +24,14 @@
 .heading-span{
   text-transform: uppercase;
   color: orange;
+ 
 }
+/* .sign-up{
+  text-decoration: none;
+  background-color: orange;
+  padding: 20px;
+  text-transform: uppercase;
+} */
 .days-container{
   max-width: 1200px;
   margin: 0 auto;
@@ -71,5 +78,6 @@
   color: #000;
   text-transform: uppercase;
 }
+
 
 

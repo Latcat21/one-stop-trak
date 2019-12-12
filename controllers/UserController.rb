@@ -48,7 +48,8 @@ class UserController < ApplicationController
     user = User.new
     user.username = params[:username]
     user.password = params[:password]
-    if user.password.length <= 8
+
+    if user.password.length < 8
       session[:logged_in] = false
       session[:message] = {
       success: false,
@@ -73,6 +74,7 @@ class UserController < ApplicationController
     user.height = params[:height]
     user.gender = params[:gender]
     user.img = params[:img]
+    user.activity_level = params[:activity_level]
     user.save
       
     session[:logged_in] = true
@@ -95,9 +97,10 @@ class UserController < ApplicationController
       # redirect to register so they can try again
       redirect '/users/register'
       end
+
     end
 
-    
+
 
   
   get '/logout' do

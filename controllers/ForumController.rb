@@ -6,7 +6,7 @@ class ForumController < ApplicationController
     erb :all_post
   end
 
-  
+
 
   get ('/new') do
     # making it so only logged in users can like posts
@@ -93,10 +93,7 @@ class ForumController < ApplicationController
         
       end
 
- 
-
-
-      delete '/:id' do
+    delete '/:id' do
         post = Post.find params[:id]
         # access the comments
         comments = post.comments

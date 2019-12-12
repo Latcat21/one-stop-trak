@@ -11,6 +11,7 @@ CREATE TABLE users(
   height INTEGER,
   weight INTEGER,
   bmr INTEGER,
+  activity_level VARCHAR(255),
   img VARCHAR,
   password_digest VARCHAR(60)
 );
