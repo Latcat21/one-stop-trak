@@ -2,6 +2,7 @@ class ApplicationController < Sinatra::Base
   require 'bundler'
   Bundler.require()
 
+  config.assets.initialize_on_precompile = false
 
   #enable sessions
   enable :sessions
