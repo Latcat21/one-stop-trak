@@ -1,17 +1,20 @@
 class ApplicationController < Sinatra::Base
   require 'bundler'
   Bundler.require()
-
+  require './config/environments'
   
 
   #enable sessions
   enable :sessions
 
   # set up our DB connection --
-  ActiveRecord::Base.establish_connection(
-    :adapter => 'postgresql',
-    :database => 'one_stop'
-  )
+  # ActiveRecord::Base.establish_connection(
+  #   :adapter => 'postgresql',
+  #   :database => 'one_stop'
+  # )
+  
+
+
 
   # use some Rack Middle to allow us to process patch/delete/put request
   use Rack::MethodOverride
