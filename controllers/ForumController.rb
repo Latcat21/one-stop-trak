@@ -2,6 +2,7 @@ class ForumController < ApplicationController
 
   get ('/') do
     #displaying all the posts
+    puts ActiveRecord::Base.connection_config
     @posts = Post.all
     erb :all_post
   end
