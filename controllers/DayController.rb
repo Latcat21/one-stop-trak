@@ -57,7 +57,6 @@ class DayController < ApplicationController
 
     end
     
-
     get('/new') do
     # making it so only logged in users can like posts
     if !session[:logged_in]
