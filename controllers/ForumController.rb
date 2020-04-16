@@ -4,6 +4,7 @@ class ForumController < ApplicationController
     #displaying all the posts
     puts ActiveRecord::Base.connection_config
     @posts = Post.all
+   
     erb :all_post
   end
 
@@ -166,6 +167,8 @@ class ForumController < ApplicationController
     end
 
     post '/:id/likes' do
+
+
       # making it so only logged in users can like posts
       if !session[:logged_in]
         #message
@@ -177,14 +180,28 @@ class ForumController < ApplicationController
         #redirect
         redirect '/users/login'
       end
+       
+      logged_in_user = User.find_by ({ :username => session[:username] })
       #grabbing the post by Id
       found_post = Post.find params[:id]
-      #creating a new like
+      
+      #check to see if ther user liked it already
+
+      found_post.likes.each do | like |
+        if like.user_id == logged_in_user.id
+          session[:message] = {
+              success: false,
+              status: "neutral",
+              message: "You already liked this post"
+            }
+            redirect '/posts'
+          end
+      end
+    #creating a new like
       new_like = Like.new
       #assignged the post id to the like id
       new_like.post_id = found_post.id
-      #finding the logged in user
-      logged_in_user = User.find_by ({ :username => session[:username] })
+    
       #storing the user id to the comment
       new_like.user_id = logged_in_user.id
       #saving the like
