@@ -65,7 +65,7 @@ class ForumController < ApplicationController
     end
 
       get  '/:id' do
-      # grabbing all the posts
+      # grabbing the posts
       @post = Post.find params[:id]
       #find how many likes are on that post
       @likes = @post.likes.count

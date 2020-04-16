@@ -22,17 +22,17 @@ class DayController < ApplicationController
       # getting the average daily calories
       @avg_cal = user.days.all.average(:calorie)
       # bmr calculation
-      gender = user.gender
-      weight = user.weight
-      age = user.age
-      height = user.height
+      # gender = user.gender
+      # weight = user.weight
+      # age = user.age
+      # height = user.height
       
-      if gender == "male"
-        @bmr = 66.47 + (6.24 * weight) + (12.7 * height) - (6.755 * age)
-      else 
-        @bmr = 655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age)
+      # if gender == "male"
+      #   @bmr = 66.47 + (6.24 * weight) + (12.7 * height) - (6.755 * age)
+      # else 
+      #   @bmr = 655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age)
         
-       end 
+      #  end 
       erb :days_home
     end
 
@@ -110,20 +110,30 @@ class DayController < ApplicationController
       erb :day_show
     end
 
-    get '/:id/edit' do
+    get '/edit/:id' do
       @day = Day.find params[:id]
       erb :edit_day
     end
 
-    put '/:id' do
+    put '/edit/:id'  do
+      puts 'route hit'
       @day = Day.find params[:id]
+      puts @day
+      puts 'this is the day^^^^^^^^^^^^^^^^'
       @day.task = params[:task]
       @day.food = params[:food]
       @day.workout = params[:workout]
       @day.calorie = params[:calorie]
+
+     session[:message] = {
+        success: false,
+        status: "good",
+        message: "Day #{@day.id} successfully edited"
+        }
+
       @day.save
-  
-      redirect '/days/'
+
+    redirect '/days'
 
     end
   
