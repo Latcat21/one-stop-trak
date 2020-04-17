@@ -14,9 +14,9 @@ class SearchController  < ApplicationController
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it 
     
-    meals = parsed_it
+    @meals = parsed_it["meals"]
 
-    puts meals[:meals]
+    puts @meals
     puts "---meals^^^^^^^^^^^^^^"
 
     erb :search_page

@@ -9,6 +9,16 @@ Search for meals
 					</div>
 		</form>
 
+    <% if session[:search] == true %>
+  <ul>
+    <% @meals.each_with_index do | meal , i |%>
+    <li> <%= meal["strMeal"] %> </li>
+
+
+    <% end %>
+  </ul>
+    <%end%>
+
 </div>
 
 
