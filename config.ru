@@ -5,6 +5,7 @@ require './controllers/ApplicationController'
 require './controllers/UserController'
 require './controllers/DayController'
 require './controllers/ForumController'
+require './controllers/SearchController'
 
 
 #models
@@ -30,4 +31,8 @@ map ('/days') {
 
 map ('/posts'){
   run ForumController
+}
+
+map ('/search'){
+  run SearchController
 }

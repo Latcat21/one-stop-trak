@@ -30,7 +30,7 @@ class ApplicationController < Sinatra::Base
 
 
   get '/' do
-    #render a splash page of home page
+    
     erb :index
   end
 
