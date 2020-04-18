@@ -52,5 +52,16 @@ CREATE TABLE comments(
   user_id INTEGER REFERENCES users(id)
 );
 
+CREATE TABLE meals(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR,
+  img VARCHAR,
+  instructions VARCHAR,
+  ingredients VARCHAR,
+  video VARCHAR,
+  user_id INTEGER REFERENCES users(id)
+
+);
+
 
 

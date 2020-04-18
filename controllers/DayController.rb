@@ -1,29 +1,33 @@
 class DayController < ApplicationController
 
-  before do 
-    puts "filter is running"
+  # before do 
+    
 
-    if !session[:logged_in]
-      #message
-      session[:message] = {
-        success: false,
-        status: "neutral",
-        message: "You must be logged in to do that"
-      }
-      #redirect
-      redirect '/users/login'
-    end
+  #   if !session[:logged_in]
+  #     #message
+  #     session[:message] = {
+  #       success: false,
+  #       status: "neutral",
+  #       message: "You must be logged in to do that"
+  #     }
+  #     #redirect
+  #     redirect '/users/login'
+  #   end
 
-  end
+  # end
 
     get('/') do
       user = User.find_by ({ :username => session[:username] })
       @days = user.days
       # getting the average daily calories
+      if user.days.exists?
       @avg_cal = user.days.all.average(:calorie).ceil
-     
+      end
+
       erb :days_home
     end
+
+
 
     get ('/bmr-info') do 
       erb :brm_info

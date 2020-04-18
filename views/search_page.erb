@@ -1,24 +1,64 @@
-<div class="container mt-6">
+<head>
+<style>
+.my-style {
+  float: left;
+  
+}
+.card{
+  max-width: 300px;
+  margin: 5px;
+  float: left;
+
+
+}
+.results{
+  width: 1200px;
+  margin: 0 auto;
+ 
+}
+
+</style>
+
+</head>
+<div class="container mt-5 text-center mt-5 p-5">
 <h1 class="mt-5">
 Search for meals
 </h1>
-<form action="/search/1" method="GET">
-					<div class="form-group float-right">
-						<input type="text" name="input" >
-						<button class="btn btn-success">SEARCH</button>
+     <div class="col-md-10 justify-content-center mt-5">
+      <form  action="/search/1" method="GET">
+					<div class="form-group">
+						<input  type="text" name="input" class="form-control">
+          <button class="btn mt-3 btn-success">SEARCH</button>
 					</div>
-		</form>
+      </form>
+      </div>
 
+</div>
+<div class="results p-6 mt-5">
     <% if session[:search] == true %>
-  <ul>
+    
     <% @meals.each_with_index do | meal , i |%>
-    <li> <%= meal["strMeal"] %> </li>
+    <div class="my-style">
+   <div class="card" >
+   <img class="card-img-top" src="<%= meal["strMealThumb"] %> " />
+   <div class="card-body">
+   <h6 class="card-title"> <%= meal["strMeal"] %>  </h6>
+   
+    <p class="card-text" >
+    <form action="/search/2" method="GET">
+    <input type="hidden" name="meals" value="<%= meal["idMeal"] %> " />
+    <button class="btn btn-success">  View </button>
 
-
+    </form>
+    </p>
+  </div>
+  </div>
     <% end %>
-  </ul>
-    <%end%>
+    <% end %>
+  
+  
 
+</div>
 </div>
 
 
