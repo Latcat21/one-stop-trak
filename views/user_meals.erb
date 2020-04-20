@@ -1,0 +1,22 @@
+<h1>
+your meals
+
+</h1>
+
+ <% @meals.each do | meal |%>
+    <div class="my-style">
+   <div class="card" style="width: 18rem;" >
+   <img class="card-img-top" src="<%= meal.img%> " />
+   <div class="card-body">
+   <h6 class="card-title"> <%= meal.name %>  </h6>
+   
+    <p class="card-text" >
+   <a class="btn btn-success" href="search/user-meals/<%= meal.id %> ">View</a>
+   
+    
+
+    </form>
+    </p>
+  </div>
+  </div>
+<% end %>

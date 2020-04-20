@@ -6,7 +6,7 @@ class SearchController  < ApplicationController
     erb  :search_page
   end
 
-  get('/1') do
+  get ('/1') do
     search_term = params[:input]
     session[:search_term] = search_term
     session[:meals] = false
@@ -25,7 +25,7 @@ class SearchController  < ApplicationController
     erb :search_page
   end
 
-  get('/2') do
+  get ('/2') do
     session[:meals] = true
     meal_id = params[:meals]
     session[:meal_id] = meal_id
@@ -36,27 +36,16 @@ class SearchController  < ApplicationController
 
     @individual_meal = parsed_it["meals"]
     puts '-------------------------------'
-    puts meal_id
+    puts  @individual_meal
     puts "^^^^^^^^^^^meal id^^^^^^^^^^^^^^^"
 
-    puts @individual_meal
-
-    ingredients = []
-   
-    for i in @individual_meal do
-      if(@individual_meal[0]["strIngredient#{i}"])
-        ingredients.push "#{@individual_meal["strIngredients#{i}"]} - #{@individual_meal["strMeasure#{i}"]}"
-      else
-        break
-        
-      end
-    end
-
-    puts ingredients
-     puts "ingredients^^^^^^^^^^^^^^^^^^"
    
 
-    erb :meal_show
+   
+   
+    
+
+   erb :meal_show
  
   end
 
@@ -75,6 +64,7 @@ class SearchController  < ApplicationController
       new_meal.name = meal["strMeal"]
       new_meal.img = meal["strMealThumb"]
       new_meal.instructions = meal["strInstructions"]
+      
       new_meal.video = meal["strYoutube"]
       new_meal.user_id = user.id
       new_meal.save
@@ -83,6 +73,13 @@ class SearchController  < ApplicationController
     redirect '/search'
   end
 
+  get ('/your-meals') do
+    user = User.find_by ({ :username => session[:username]})
+    @meals = user.meals
 
-
+    erb :user_meals
   end
+
+
+
+end
