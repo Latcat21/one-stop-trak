@@ -3,6 +3,7 @@
   .my-style{
     margin: 0 auto;
   }
+input::selection { background: transparent; } input::-moz-selection { background: transparent; }
 
   </style>
 </head>
@@ -42,7 +43,7 @@
 <h5>Add meal </h5>
 <form  action="/search/new" method="POST">
 
-<input id="prodId" name="meal" type="hidden" value="<% @individual_meal %>">
+<input id="prodId" name="meal" type="hidden" value="<%= meal["idMeal"] %>">
 <button class="btn btn-primary" >Add</button>
 
 </form>

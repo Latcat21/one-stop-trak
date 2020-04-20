@@ -29,31 +29,18 @@ class SearchController  < ApplicationController
     session[:meals] = true
     meal_id = params[:meals]
     session[:meal_id] = meal_id
-
     uri = URI("https://www.themealdb.com/api/json/v1/1/lookup.php?i=#{meal_id}")
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it
-
     @individual_meal = parsed_it["meals"]
-    puts '-------------------------------'
-    puts  @individual_meal
-    puts "^^^^^^^^^^^meal id^^^^^^^^^^^^^^^"
-
-   
-
-   
-   
-    
-
-   erb :meal_show
+    erb :meal_show
  
   end
 
   post ('/new') do
     user = User.find_by ({ :username => session[:username] })
-
-    meal_id = session[:meal_id]
-
+    meal_id = params[:meal]
+    
     uri = URI("https://www.themealdb.com/api/json/v1/1/lookup.php?i=#{meal_id}")
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it
@@ -79,7 +66,6 @@ class SearchController  < ApplicationController
 
     erb :user_meals
   end
-
 
 
 end
