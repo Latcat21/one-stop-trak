@@ -1,12 +1,21 @@
 <head>
   <style>
-  .my-style{
-    margin: 0 auto;
-    
+
+  .container{
+    display: flex;
+    align-items: flex;
+    justify-content: center;
   }
-  .card{
+
+  .my-card{
     width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   
   }
+ .top-card{
+   margin: 15px;
+ }
  
   .card p{
     font-size: 15px;
@@ -25,18 +34,18 @@ input::selection { background: transparent; } input::-moz-selection { background
 
 
 
-<div class="card my-style" >
+<div class="my-card shadow-lg  bg-white rounded" >
+<div class="top-card">
+<img class="card-img-top " src="<%= meal["strMealThumb"]  %>">
 <h2 class="card-title text-center p-3 bg-light">
 <%= meal["strMeal"]%>
 </h2>
-<img class="card-img-top " src="<%= meal["strMealThumb"]  %>">
+</div>
 <div class="card-body">
 <h5 class="card-title text-center"> Instructions </h5>
 <p>
 <%= meal["strInstructions"]%>
 </p>
-</div>
-<div class="card-body ">
 <form  action="/search/new" method="POST">
 <input id="prodId" name="meal" type="hidden" value="<%= meal["idMeal"] %>">
 <button class="btn btn-primary mx-1" >Add</button>
@@ -47,3 +56,4 @@ input::selection { background: transparent; } input::-moz-selection { background
 </div>
 </div>
 <%end%>
+</div>
