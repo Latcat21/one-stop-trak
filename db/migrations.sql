@@ -10,10 +10,15 @@ CREATE TABLE users(
   age INTEGER,
   height INTEGER,
   weight INTEGER,
-  bmr INTEGER,
   activity_level VARCHAR(255),
   img VARCHAR,
   password_digest VARCHAR(60)
+);
+
+CREATE TABLE bmr(
+  id SERIAL PRIMARY KEY,
+  calculation INTEGER,
+  user_id INTEGER REFERENCES users(id)
 );
 
 CREATE TABLE days(

@@ -15,6 +15,7 @@ require './models/CommentModel'
 require './models/PostModel'
 require './models/LikeModel'
 require './models/MealModel'
+require './models/BmrModel'
 
 
 

@@ -24,14 +24,47 @@ class DayController < ApplicationController
       @avg_cal = user.days.all.average(:calorie).ceil
       end
 
+      @bmr = user.bmr
+      
+      
+
+     
+      
+
       erb :days_home
     end
 
 
 
     get ('/bmr-info') do 
+      
       erb :brm_info
     end
+
+    post '/bmr-info' do
+      'hello world'
+      user = User.find_by ({:username => session[:username]})
+
+      user.gender = params[:gender]
+      user.age = params[:age]
+      user.height = params[:height]
+      user.weight = params[:weight]
+
+      bmr = Bmr.new
+      if user.gender == "male"
+        bmr.calculation = (4.536 * user.weight) + (15.88 * user.height) - (5 * user.age) + 5
+      elsif  user.gender == 'female'
+        bmr.calculation = (4.536 * user.weight) + (15.88 * user.height) - (5 * user.age) - 161
+      end
+      bmr.user_id = user.id
+
+      bmr.save
+
+      redirect '/days'
+    
+   end
+
+
 
     get ('/:id/edit-account') do
       @user = User.find_by ({ :username => session[:username] })

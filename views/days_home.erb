@@ -2,11 +2,17 @@
   <h1 class="text-center display-5">Welcome to your account</h1>
       
       <h4 class="text-center">You average:  <%=@avg_cal%> calories a day</h4>
-
+      <% if @bmr.nil?%>
+      <p></p>
+      <% else %>
+      <h4 class="text-center">Your BMR :  <%=@bmr.calculation%> calories</h4>
+      <% end %>
   <h5 class="text-center">
         <a href="/days/new" class="btn btn-primary m-4">Start a new day</a>
-        <a href="/posts/new" class="btn btn-success">Start A new post </a>
-        <a class="text-center btn btn-secondary m-4" href="days/bmr-info">Learn more about BMR </a>
+        <a href="/posts/new" class="btn btn-secondary">Start a new post </a>
+        <a class="text-center btn btn-success m-4" href="days/bmr-info"> calculate BMR </a>
+        <a class="text-center btn btn-dark " href="/search">Find recipes </a>
+
 
 </h5>
  
