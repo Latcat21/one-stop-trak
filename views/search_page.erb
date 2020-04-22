@@ -1,15 +1,21 @@
 <head>
 <style>
 .card{
-  width: 350px;
   margin-bottom: 25px;
+ max-width: 250px; 
+  float: left;
+  overflow: hidden;
+  margin: 5px 20px;
+
+}
+.my-card img{
+  width: 50%;
 }
 
 .results{
   width: 1200px;
   margin: 0 auto;
-  display: grid;
- 
+
  
 }
 
@@ -30,20 +36,20 @@ Search for meals
       </div>
 
 </div>
-<div class=" container results p-6 mt-5 col-md-10 justify-content-center">
+<div class="results ">
     <% if session[:search] == true %>
     
     <% @meals.each_with_index do | meal , i |%>
-    <div class="my-style">
-   <div class="card" >
+  
+   <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
    <img class="card-img-top" src="<%= meal["strMealThumb"] %> " />
    <div class="card-body">
-   <h6 class="card-title"> <%= meal["strMeal"] %>  </h6>
+   <h6 class="card-title text-center"> <%= meal["strMeal"] %>  </h6>
    
     <p class="card-text" >
     <form action="/search/2" method="GET">
     <input type="hidden" name="meals" value="<%= meal["idMeal"] %> " />
-    <button class="btn btn-success">  View </button>
+    <button class="btn btn-success btn-block">  View </button>
 
     </form>
     </p>
@@ -54,7 +60,7 @@ Search for meals
   
   
 
-</div>
+
 </div>
 
 
