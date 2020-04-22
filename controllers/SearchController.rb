@@ -74,5 +74,12 @@ class SearchController  < ApplicationController
     erb :user_meal_show
   end
 
+  delete '/your-meals/:id' do
+    meal = Meal.find params[:id]
+    meal.destroy
+
+    redirect '/search/your-meals'
+
+  end
 
 end

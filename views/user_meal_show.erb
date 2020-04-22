@@ -37,6 +37,12 @@ input::selection { background: transparent; } input::-moz-selection { background
 <a class="btn btn-success mx-1" href="<%= @meal.ingredients%>"target="_blank" > Ingredients</a>
 <a class="btn btn-secondary mx-1" href="<%= @meal.video%>"target="_blank" > Video</a>
 
-</form>
+<form action="/search/your-meals/<%=@meal.id %>" method="POST" >
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger my-3">DELETE</button>
+ </form>
+
+
+
 </div>
 </div>
