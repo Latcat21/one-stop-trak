@@ -59,7 +59,8 @@ CREATE TABLE meals(
   instructions VARCHAR,
   ingredients VARCHAR,
   video VARCHAR,
-  user_id INTEGER REFERENCES users(id)
+  user_id INTEGER REFERENCES users(id),
+  meal_id VARCHAR
 
 );
 

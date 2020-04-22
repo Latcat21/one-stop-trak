@@ -2,7 +2,16 @@
   <style>
   .my-style{
     margin: 0 auto;
+    
   }
+  .card{
+    width: 600px;
+  }
+ 
+  .card p{
+    font-size: 15px;
+  }
+
 input::selection { background: transparent; } input::-moz-selection { background: transparent; }
 
   </style>
@@ -16,35 +25,23 @@ input::selection { background: transparent; } input::-moz-selection { background
 
 
 
-<div class="card my-style" style= "width: 600px;">
-<h2 class="card-title text-center">
+<div class="card my-style" >
+<h2 class="card-title text-center p-3 bg-light">
 <%= meal["strMeal"]%>
 </h2>
-<img class="card-img-top" src="<%= meal["strMealThumb"]  %>">
+<img class="card-img-top " src="<%= meal["strMealThumb"]  %>">
 <div class="card-body">
 <h5 class="card-title text-center"> Instructions </h5>
 <p>
 <%= meal["strInstructions"]%>
 </p>
-
-
 </div>
-<div class="card-body">
-<h5 class="card-title"> Ingredients</h5>
-<a href="<%= meal["strSource"] %>"target="_blank" > View </a>
-
-</div>
-<div class="card-body">
-<h5 class="card-title"> Video </h5>
-<a href="<%= meal["strYoutube"] %>"target="_blank" > View </a>
-
-</div>
-<div class="card-body">
-<h5>Add meal </h5>
+<div class="card-body ">
 <form  action="/search/new" method="POST">
-
 <input id="prodId" name="meal" type="hidden" value="<%= meal["idMeal"] %>">
-<button class="btn btn-primary" >Add</button>
+<button class="btn btn-primary mx-1" >Add</button>
+<a class="btn btn-success mx-1" href="<%= meal["strSource"] %>"target="_blank" > Ingredients</a>
+<a class="btn btn-secondary mx-1" href="<%= meal["strYoutube"] %>"target="_blank" > Video</a>
 
 </form>
 </div>

@@ -1,19 +1,15 @@
 <head>
 <style>
-.my-style {
-  float: left;
-  
-}
 .card{
-  max-width: 300px;
-  margin: 5px;
-  float: left;
-
-
+  width: 350px;
+  margin-bottom: 25px;
 }
+
 .results{
   width: 1200px;
   margin: 0 auto;
+  display: grid;
+ 
  
 }
 
@@ -34,7 +30,7 @@ Search for meals
       </div>
 
 </div>
-<div class="results p-6 mt-5">
+<div class=" container results p-6 mt-5 col-md-10 justify-content-center">
     <% if session[:search] == true %>
     
     <% @meals.each_with_index do | meal , i |%>

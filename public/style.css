@@ -31,7 +31,10 @@
   background-color: orange;
   padding: 20px;
   text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
 }
+
 .days-container{
   max-width: 1200px;
   margin: 0 auto;
