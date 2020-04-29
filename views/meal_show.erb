@@ -8,13 +8,17 @@
   }
 
   .my-card{
-    width: 600px;
+    width: 800px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
    
   }
  .top-card{
    margin: 15px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
  }
  
   .card p{
@@ -37,7 +41,7 @@ input::selection { background: transparent; } input::-moz-selection { background
 <div class="my-card shadow-lg  bg-white rounded" >
 <div class="top-card">
 <img class="card-img-top " src="<%= meal["strMealThumb"]  %>">
-<h2 class="card-title text-center p-3 bg-light">
+<h2 class="card-title text-center p-3 ">
 <%= meal["strMeal"]%>
 </h2>
 </div>

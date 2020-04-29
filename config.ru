@@ -16,6 +16,7 @@ require './models/PostModel'
 require './models/LikeModel'
 require './models/MealModel'
 require './models/BmrModel'
+require './models/FoodModel'
 
 
 

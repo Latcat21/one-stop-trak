@@ -21,6 +21,12 @@ CREATE TABLE bmr(
   user_id INTEGER REFERENCES users(id)
 );
 
+CREATE TABLE foods(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR,
+  calories INTEGER
+);
+
 CREATE TABLE days(
   id SERIAL PRIMARY KEY,
   name DATE,

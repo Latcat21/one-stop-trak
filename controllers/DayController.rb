@@ -23,14 +23,7 @@ class DayController < ApplicationController
       if user.days.exists?
       @avg_cal = user.days.all.average(:calorie).ceil
       end
-
-      @bmr = user.bmr
       
-      
-
-     
-      
-
       erb :days_home
     end
 
@@ -120,14 +113,44 @@ class DayController < ApplicationController
       # redirect 
       redirect '/days'
     end
+
       new_day.task = params[:tasks]
       new_day.food = params[:foods]
       new_day.workout = params[:workout]
       new_day.calorie = params[:calories]
       logged_in_user = User.find_by ({ :username => session[:username] })
       new_day.user_id = logged_in_user.id
-      new_day.save
 
+
+      food = new_day.food
+
+      food_arr = food.split(',')
+
+      food_arr =  food_arr.map do | food |
+        food.strip
+      end
+
+    puts food_arr
+    puts "^^^^food arr__-----"
+      def total_calories meal
+        
+        food_obj = {}
+        all_food =  Food.all
+      
+        all_food.each do | food, calorie  |
+          food_obj[food.name] = food.calories
+        end
+        
+    meal_calories = meal.map { |food| food_obj[food] }
+        total_calories = meal_calories.inject(0, :+)
+       
+     end
+
+     puts total_calories(food_arr)
+
+     puts "^^^^^^total calories^^^^^^^^^^^^^"
+
+      new_day.save
       redirect '/days'
       end
 
