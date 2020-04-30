@@ -19,10 +19,14 @@ class DayController < ApplicationController
     get('/') do
       user = User.find_by ({ :username => session[:username] })
       @days = user.days
+      
       # getting the average daily calories
       if user.days.exists?
       @avg_cal = user.days.all.average(:calorie).ceil
       end
+
+      @bmr = user.bmr
+    
       
       erb :days_home
     end
@@ -42,6 +46,12 @@ class DayController < ApplicationController
       user.age = params[:age]
       user.height = params[:height]
       user.weight = params[:weight]
+
+      
+      bmr = user.bmr
+      if bmr
+      bmr.destroy
+      end
 
       bmr = Bmr.new
       if user.gender == "male"
