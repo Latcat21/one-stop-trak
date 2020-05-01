@@ -30,7 +30,7 @@ CREATE TABLE foods(
 CREATE TABLE days(
   id SERIAL PRIMARY KEY,
   name DATE,
-  time_awake TIME WITH TIME ZONE,
+  sleep BIGINT,
   task VARCHAR,
   food VARCHAR,
   workout VARCHAR,

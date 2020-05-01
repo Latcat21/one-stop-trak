@@ -38,7 +38,10 @@ Search for meals
 </div>
 <div class="results ">
     <% if session[:search] == true %>
-    
+
+    <% if session[:search] == "bad" %>
+    <h1>Not found! </h1>
+    <% end %>
     <% @meals.each_with_index do | meal , i |%>
   
    <div class="card shadow-lg p-3 mb-5 bg-white rounded" >

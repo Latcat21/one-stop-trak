@@ -10,14 +10,19 @@ class SearchController  < ApplicationController
     search_term = params[:input]
     session[:search_term] = search_term
     session[:meals] = false
-    session[:search] = true
+   
 
     uri = URI("https://www.themealdb.com/api/json/v1/1/search.php?s=#{search_term}")
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it 
     
+
     if parsed_it["meals"]
-    @meals = parsed_it["meals"]
+      session[:search] = true
+      @meals = parsed_it["meals"]
+    else
+      session[:seach] = "bad"
+    
     end
    
     erb :search_page

@@ -1,20 +1,7 @@
 <div class="container">
   <div class='day-show mt-5 p-5 bg-white rounded'>
     <div class="row">
-      <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8">
-        <div class="card m-3">
-          <div class="card-header bg-light text-center">
-            <h3 class="card-title text-center">Your Tasks</h3>
-             <i class="fas fa-pencil-alt py-2 text-center"></i> 
-          </div>
-            <ul class="list-group list-group-flush">
-              <%@day.task.split("," ) do |task|%>
-                <li class="list-group-item text-center"><%=task%></li>
-              <%end%>
-            </ul>
-          </div>
-        </div>
-          <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
+      <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
             <div class="card m-3">
               <div class="card-header bg-light text-center">
                 <h3 class="card-title text-center">Your workout</h3>

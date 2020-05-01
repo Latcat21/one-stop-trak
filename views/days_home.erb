@@ -5,6 +5,12 @@
       <% else %>
       <h4 class="text-center">You average:  <%=@avg_cal%> calories a day</h4>
       <% end %>
+       <% if @avg_sleep.nil?%>
+      <p></p>
+      <% else %>
+      <h4 class="text-center">Your average sleep is:  <%=@avg_sleep%>  hours a night</h4>
+      <% end %>
+
       <% if @bmr.nil?%>
       <p></p>
       <% else %>
@@ -26,8 +32,16 @@
       <%=day.name %>
       </div>
       <div class="day-card-body">
-        <p>Wake up time: <%=day.time_awake%></p>
-        <p>Calories:  <%=day.calorie%></p>
+        <p>Hours slept <%=day.sleep%></p>
+        <% if @bmr.nil? %>
+        <p>Calories:  <%=day.calorie %> </p>
+       
+        <%elsif day.calorie > @bmr.calculation%>
+        <p class="text-danger">Calories:  <%=day.calorie %></p>
+        <%elsif day.calorie < @bmr.calculation %>
+        
+        <p class="text-success">Calories:  <%=day.calorie %></p>
+        <% end %>
       </div>
       <div class="day-card-buttons">
         <a href="/days/<%= day.id%>">View</a>
