@@ -37,10 +37,10 @@
         <p>Calories:  <%=day.calorie %> </p>
        
         <%elsif day.calorie > @bmr.calculation%>
-        <p class="text-danger">Calories:  <%=day.calorie %></p>
+        <p class="bg-danger">Calories:  <%=day.calorie %></p>
         <%elsif day.calorie < @bmr.calculation %>
         
-        <p class="text-success">Calories:  <%=day.calorie %></p>
+        <p class="bg-success">Calories:  <%=day.calorie %></p>
         <% end %>
       </div>
       <div class="day-card-buttons">

@@ -1,21 +1,6 @@
-<div class="container">
+
   <div class='day-show mt-5 p-5 bg-white rounded'>
-    <div class="row">
-      <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
-            <div class="card m-3">
-              <div class="card-header bg-light text-center">
-                <h3 class="card-title text-center">Your workout</h3>
-                  <i class="fas fa-utensils py-2 text-center"></i>
-              </div>
-                <%@day.workout.split("," ) do |workout|%>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item text-center"><%=workout%></li>
-                </ul>
-                <%end%>
-                </div>
-              </div>
-            </div>
-        <div class="container">
+  <div class="container">
         <div class="row">
         <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8">
         <div class="card m-3">
@@ -44,15 +29,25 @@
                 </div>
               </div>
 
-        </div>
-        </div>
+       
+        
+         <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4 offset-md-8 .offset-lg-8 offset-xl-8  ">
+            <div class="card m-3">
+              <div class="card-header bg-light text-center">
+                <h3 class="card-title text-center">Your workouts</h3>
+                  <i class="fas fa-utensils py-2 text-center"></i>
+              </div>
+                <%@day.workout.split("," ) do |workout|%>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-center"><%=workout%></li>
+                </ul>
+                <%end%>
+                </div>
+              </div>
+            </div>
           
         
-      
-
-      
-      
-    <a class="btn btn-secondary" href="/days/edit/<%=@day.id %>">Edit your day</a>
+       <a class="btn btn-secondary" href="/days/edit/<%=@day.id %>">Edit your day</a>
 
       </div>
     </div>
