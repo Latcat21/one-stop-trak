@@ -46,15 +46,18 @@
   </div>
   </div>
 </nav>
-
-
-
 </header>
 
 <% if session[:message] %>
+<% if session[:message][:status] == 'bad' %>
+  <div class="sessions-msg mt-5 bg-danger pt-3 text-center">
+<% else %>
 <div class="sessions-msg mt-5 bg-secondary pt-3 text-center">
+<% end %>
 <h3 class="text-center ">
-<h3 class="message <%= session[:message][:status] %>"> </h3>
+<h3 class="message <%= session[:message][:status] %>">
+
+ </h3>
 </h3>
 <h4 class="text-white pb-3">
 <%= session[:message][:message] %>
@@ -63,7 +66,6 @@
  end 
  session[:message] = nil 
  %>
- 
  </div>
 <body>
 
