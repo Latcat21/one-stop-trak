@@ -20,7 +20,7 @@ class DayController < ApplicationController
       # getting the average daily calories AND hours slept
       if user.days.exists?
       @avg_cal = user.days.all.average(:calorie).ceil
-      @avg_sleep = user.days.all.average(:sleep)
+      @avg_sleep = user.days.all.average(:sleep).ceil(2)
       end
 
       @bmr = user.bmr

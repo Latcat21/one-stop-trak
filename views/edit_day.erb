@@ -1,10 +1,10 @@
 <div class="container">
-<div class="day-form bg-white rounded shadow-lg mt-5 p-5">
-<h3 class="text-secondary display-4 p-4 text-center">Edit Your Day</h3>
-<form  action="/days/edit/<%=@day.id%>" method="POST">
-<input type="hidden" name="_method" value="PUT" />
-<div class="form-group">
-<label>Enter in the foods you've eaten seperated by commas</label>
+  <div class="day-form bg-white rounded shadow-lg mt-5 p-5">
+    <h3 class="text-secondary display-4 p-4 text-center">Edit Your Day</h3>
+      <form  action="/days/edit/<%=@day.id%>" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+          <div class="form-group">
+          <label>Enter in the foods you've eaten seperated by commas</label>
 <input class="form-control" name="food" value="<%=@day.food %>"
 rows=4 />
 </div>
