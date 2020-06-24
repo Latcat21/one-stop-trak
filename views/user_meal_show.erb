@@ -2,47 +2,31 @@
   <style>
   .my-style{
     margin: 0 auto;
-    
-  }
+    }
   .card{
     width: 600px;
   }
- 
-  .card p{
+.card p{
     font-size: 15px;
   }
 
 input::selection { background: transparent; } input::-moz-selection { background: transparent; }
-
   </style>
 </head>
-
-<div class="container mt-5 p-5">
-
-
-
-<div class="card my-style" >
-<h2 class="card-title text-center p-3 bg-light">
-<%= @meal.name%>
-</h2>
-<img class="card-img-top " src="<%= @meal.img  %>">
-<div class="card-body">
-<h5 class="card-title text-center"> Instructions </h5>
-<p>
-<%= @meal.instructions%>
-</p>
-</div>
-<div class="card-body ">
-
-<a class="btn btn-success mx-1" href="<%= @meal.ingredients%>"target="_blank" > Ingredients</a>
-<a class="btn btn-secondary mx-1" href="<%= @meal.video%>"target="_blank" > Video</a>
-
-<form action="/search/your-meals/<%=@meal.id %>" method="POST" >
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger my-3">DELETE</button>
- </form>
-
-
-
-</div>
-</div>
+  <div class="container mt-5 p-5">
+    <div class="card my-style" >
+      <h2 class="card-title text-center p-3 bg-light"><%= @meal.name%></h2>
+        <img class="card-img-top " src="<%= @meal.img  %>">
+          <div class="card-body">
+            <h5 class="card-title text-center"> Instructions </h5>
+            <p><%= @meal.instructions%></p>
+          </div>
+            <div class="card-footer ">
+              <form action="/search/your-meals/<%=@meal.id %>" method="POST" >
+                <input type="hidden" name="_method" value="DELETE">
+                  <button class="btn btn-danger m-1">DELETE</button>
+              </form>
+                <a class="btn btn-success m-1" href="<%= @meal.ingredients%>"target="_blank">Ingredients</a>
+                  <a class="btn btn-secondary m-1" href="<%= @meal.video%>"target="_blank" > Video</a>
+            </div>
+    </div>

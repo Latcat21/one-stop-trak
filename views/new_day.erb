@@ -1,38 +1,28 @@
 <div class="container">
-<div class="day-form bg-white rounded shadow-lg mt-5 p-5">
-<h2 class="text-center py-2">Please Fill Out the following</h2>
-<h5 class="text-center pb-3">You can Add / change later in the day </h5>
-
-<form  action="/days/new" method="POST">
-
-<div class="form-group">
-<label >Date:</label>
-
-<input type="date" class="form-control" name="name"
-       value="<%= Date.today %> "
-       min="<%= Date.today %> %" max="2022-12-31">
-<br>
-<label>Hours slept</label>
-<textarea name="hours" class="form-control" row=2></textarea>
- </div>
- 
-<div class="form-group">
-<label>Enter in the foods you've eaten seperated by commas</label>
-<textarea class="form-control" name="foods" rows=4></textarea>
-</div>
-<div class="form-group">
-<label>Enter in your workouts seperated by commas</label>
-<textarea class="form-control" name="workout" rows=4></textarea>
-</div>
-
-
-
-<div class="form-group">
-<label>Estimate your total calories</label>
-<textarea name="calories" class="form-control" row=2></textarea>
-</div>
-<button class="btn btn-primary" >Create Day</button>
-
-</form>
+  <div class="day-form bg-white rounded shadow-lg mt-5 p-5">
+   <h2 class="text-center py-2">Please Fill Out the following</h2>
+    <h5 class="text-center pb-3">You can Add / change later in the day </h5>
+     <form  action="/days/new" method="POST">
+      <div class="form-group">
+       <label >Date:</label>
+        <input type="date" class="form-control" name="name" value="<%= Date.today %> "min="<%= Date.today %> %" max="2022-12-31" required>
+       <br>
+        <label>Hours slept</label>
+        <textarea name="hours" class="form-control" row=2 required></textarea>
+       </div>
+        <div class="form-group">
+         <label>Enter in the foods you've eaten seperated by commas</label>
+           <textarea class="form-control" name="foods" rows=4 required></textarea>
+        </div>
+       <div class="form-group">
+        <label>Enter in your workouts seperated by commas</label>
+        <textarea class="form-control" name="workout" rows=4 required></textarea>
+      </div>
+       <div class="form-group">
+        <label>Estimate your total calories</label>
+         <textarea name="calories" class="form-control" row=2 required></textarea>
+       </div>
+       <button class="btn btn-primary" >Create Day</button>
+    </form>
 </div>
 </div>
