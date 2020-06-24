@@ -13,24 +13,13 @@ class ApplicationController < Sinatra::Base
   #   :database => 'one_stop'
   # )
   
-
-
-
-  # use some Rack Middle to allow us to process patch/delete/put request
   use Rack::MethodOverride
 
   set :Method_Override, true
-
-  
   set :views, File.expand_path('../../views', __FILE__)
-
-
-  
   set :public_dir, File.expand_path('../../public', __FILE__)
 
-
   get '/' do
-    
     erb :index
   end
 
@@ -41,7 +30,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '*' do
-    
     halt 404
   end
 

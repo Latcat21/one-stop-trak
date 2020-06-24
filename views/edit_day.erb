@@ -4,21 +4,18 @@
       <form  action="/days/edit/<%=@day.id%>" method="POST">
         <input type="hidden" name="_method" value="PUT" />
           <div class="form-group">
-          <label>Enter in the foods you've eaten seperated by commas</label>
-<input class="form-control" name="food" value="<%=@day.food %>"
-rows=4 />
-</div>
-<div class="form-group">
-<label>Enter in your workouts seperated by commas</label>
-<input class="form-control" name="workout" value="<%=@day.workout %>"  rows=4 />
-</div>
-<div class="form-group">
-<label>Estimate your total calories</label>
-<input name="calorie" class="form-control" value="<%=@day.calorie %>"
- />
-</div>
-<button class="btn btn-primary" >Update Day</button>
-
-</form>
-</div>
+            <label>Enter in the foods you've eaten seperated by commas</label>
+            <textarea class="form-control" name="food" rows=4><%= @day.food %></textarea>
+          </div>
+          <div class="form-group">
+            <label>Enter in your workouts seperated by commas</label>
+              <textarea class="form-control" name="workout" rows=4><%=@day.workout %></textarea>
+          </div>
+          <div class="form-group">
+            <label>Estimate your total calories</label>
+            <input name="calorie" class="form-control" value="<%=@day.calorie %>"/>
+          </div>
+          <button class="btn btn-primary" >Update Day</button>
+      </form>
+  </div>
 </div>

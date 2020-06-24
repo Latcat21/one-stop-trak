@@ -55,8 +55,10 @@ class DayController < ApplicationController
       elsif  user.gender == 'female'
         bmr.calculation = (4.536 * user.weight) + (15.88 * user.height) - (5 * user.age) - 161
       end
+
       bmr.user_id = user.id
       bmr.save
+
       redirect '/days'
     
    end
@@ -65,13 +67,14 @@ class DayController < ApplicationController
    get ('/:id/edit-account') do
       @user = User.find_by ({ :username => session[:username] })
       erb :edit_account
-    end
-  #PUT ROUTE FOR EDITING THE ACCOUNT
+  end
+
+    #PUT ROUTE FOR EDITING THE ACCOUNT
     put ('/:id') do
       @user = User.find_by ({ :username => session[:username] })
       @user.age = params[:age]
       @user.height = params[:height]
-      @user.weight = params[:weidht]
+      @user.weight = params[:weight]
       @user.save
 
       redirect '/days/'
@@ -84,7 +87,7 @@ class DayController < ApplicationController
     #message
       session[:message] = {
         success: false,
-        status: "neutral",
+        status: "bad",
         message: "You must be logged in to do that"
       }
       #redirect
@@ -163,7 +166,7 @@ class DayController < ApplicationController
         success: false,
         status: "good",
         message: "Day #{@day.id} successfully edited"
-        }
+      }
 
       @day.save
 
