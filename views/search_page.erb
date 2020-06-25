@@ -18,52 +18,40 @@
 
  
 }
-
 </style>
-
-</head>
-<div class="container mt-5 text-center mt-5 p-5">
-<h1 class="mt-5">
-Search for meals
-</h1>
-     <div class="col-md-10 justify-content-center mt-5">
-      <form  action="/search/1" method="GET">
-					<div class="form-group">
-						<input  type="text" name="input" class="form-control">
-          <button class="btn mt-3 btn-success">SEARCH</button>
+  </head>
+    <div class="container mt-5 text-center mt-5 p-5">
+      <h1 class="mt-5">Search for meals</h1>
+        <div class="col-md-10 justify-content-center mt-5">
+          <form  action="/search/1" method="GET">
+					  <div class="form-group">
+						  <input  type="text" name="input" class="form-control">
+              <button class="btn mt-3 btn-success">SEARCH</button>
 					</div>
-      </form>
+          </form>
       </div>
 
 </div>
-<div class="results ">
+  <div class="results ">
     <% if session[:search] == true %>
-
     <% if session[:search] == "bad" %>
-    <h1>Not found! </h1>
-    <% end %>
-    <% @meals.each_with_index do | meal , i |%>
-  
-   <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
-   <img class="card-img-top" src="<%= meal["strMealThumb"] %> " />
-   <div class="card-body">
-   <h6 class="card-title text-center"> <%= meal["strMeal"] %>  </h6>
-   
-    <p class="card-text" >
-    <form action="/search/2" method="GET">
-    <input type="hidden" name="meals" value="<%= meal["idMeal"] %> " />
-    <button class="btn btn-success btn-block">  View </button>
-
-    </form>
-    </p>
-  </div>
-  </div>
+      <h1>Not found! </h1>
+      <% end %>
+      <% @meals.each_with_index do | meal , i |%>
+       <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+        <img class="card-img-top" src="<%= meal["strMealThumb"] %> " />
+          <div class="card-body">
+            <h6 class="card-title text-center"><%= meal["strMeal"] %></h6>
+              <p class="card-text" >
+                <form action="/search/2" method="GET">
+                  <input type="hidden" name="meals" value="<%= meal["idMeal"] %> " />
+                    <button class="btn btn-success btn-block"> View </button>
+                </form>
+              </p>
+            </div>
+          </div>
     <% end %>
     <% end %>
-  
-  
-
-
 </div>
 
 

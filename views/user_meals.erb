@@ -18,31 +18,21 @@
 
  
 }
-
 </style>
-
-
 </head>
-
-<div class="container mt-5">
-<h1 class="text-center pt-5">
-Your meals
-</h1>
-<div class="results ">
-
-
- <% @meals.each do | meal |%>
-   <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
-   <img class="card-img-top" src="<%= meal.img %> " />
-   <div class="card-body">
-   <h6 class="card-title text-center"> <%= meal.name %>  </h6>
-   
-    <p class="card-text text-center" >
-   <a class="btn btn-success" href="/search/your-meals/<%= meal.id %> ">View</a>
-   
-    </form>
-    </p>
-  </div>
+  <div class="container mt-5">
+    <h1 class="text-center pt-5">Your meals</h1>
+      <div class="results ">
+      <% @meals.each do | meal |%>
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+          <img class="card-img-top" src="<%= meal.img %> " />
+            <div class="card-body">
+          <h6 class="card-title text-center"> <%= meal.name %>  </h6>
+         <p class="card-text text-center" >
+          <a class="btn btn-success" href="/search/your-meals/<%= meal.id %> ">View</a>
+      </form>
+        </p>
+    </div>
   </div>
 <% end %>
 </div>

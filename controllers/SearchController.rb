@@ -10,20 +10,18 @@ class SearchController  < ApplicationController
     search_term = params[:input]
     session[:search_term] = search_term
     session[:meals] = false
-   
-
     uri = URI("https://www.themealdb.com/api/json/v1/1/search.php?s=#{search_term}")
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it 
     
 
+    #checking if there are results
     if parsed_it["meals"]
       session[:search] = true
       @meals = parsed_it["meals"]
     else
       session[:seach] = "bad"
-    
-    end
+   end
    
     erb :search_page
   end
@@ -36,8 +34,7 @@ class SearchController  < ApplicationController
     parsed_it = JSON.parse it
     @individual_meal = parsed_it["meals"]
     erb :meal_show
- 
-  end
+ end
 
   post ('/new') do
     user = User.find_by ({ :username => session[:username] })
@@ -58,8 +55,12 @@ class SearchController  < ApplicationController
       new_meal.meal_id = meal["idMeal"]
       new_meal.user_id = user.id
       new_meal.save
+      session[:message] = {
+        success: true,
+        status: "good",
+        message: "You Succesfull added #{new_meal.name} to your account"
+      }
     end
-
     redirect '/search'
   end
 
@@ -73,18 +74,18 @@ class SearchController  < ApplicationController
   get '/your-meals/:id' do
     user = User.find_by ({:username => session[:username]})
     @meal = Meal.find params[:id]
-
-    puts '---------------'
-    puts @meal
-    puts '-----meal---------'
-
     erb :user_meal_show
   end
 
   delete '/your-meals/:id' do
     meal = Meal.find params[:id]
+    name = meal.name
     meal.destroy
-
+    session[:message] = {
+      success: true,
+      status: "good",
+      message: "You deleted #{name} from your account"
+    }
     redirect '/search/your-meals'
 
   end
