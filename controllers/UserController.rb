@@ -21,6 +21,8 @@ class UserController < ApplicationController
         status: "good",
         message: "Logged in as #{user.username}"
       }
+     
+
       redirect '/days'
       else
       # error -- incorrect un or pw

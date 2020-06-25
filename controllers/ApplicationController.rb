@@ -1,7 +1,12 @@
 class ApplicationController < Sinatra::Base
+  
   require 'bundler'
   Bundler.require()
+
   require './config/environments'
+  require 'flash'
+
+
   
 
   #enable sessions

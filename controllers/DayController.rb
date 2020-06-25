@@ -98,28 +98,10 @@ class DayController < ApplicationController
     
     #POST ROUTE FOR A NEW DAY
     post('/new') do
-      new_day = Day.new
-      new_day.name = params[:name]
-      
-      if !new_day.name
-        session[:message] = {
-        success: false,
-        status: "bad",
-        message: "Please fill out the forms"
-        }
-      
-        redirect '/days'
-      end
-
-      new_day.sleep = params[:hours]
-      new_day.food = params[:foods]
-      new_day.workout = params[:workout]
-      new_day.calorie = params[:calories]
       logged_in_user = User.find_by ({ :username => session[:username] })
-      new_day.user_id = logged_in_user.id
-      # food = new_day.food
-      new_day.save
-      redirect '/days'
+      new_day = Day.create(name: params[:name], sleep: params[:hours], food: params[:foods], workout: params[:workout], calorie: params[:calories], user_id: logged_in_user.id  )
+    
+    redirect '/days'
 
       # FOR FUTUTUE CALORIE DATABASE
 

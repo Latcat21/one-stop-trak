@@ -1,5 +1,6 @@
 require 'sinatra/base'
 
+
 #controllers
 require './controllers/ApplicationController'
 require './controllers/UserController'

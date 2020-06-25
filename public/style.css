@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   }
+
 .home-section{
   height: 90vh;
   background-image:  linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)) ,url(../images/home-section.jpg);
@@ -33,6 +34,27 @@
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
+  border-radius: 10px;
+}
+.sign-up:hover{
+  text-decoration: none;
+  transform: scaleY(0.6);
+  color: #fff;
+}
+.session-message{
+  width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 25px;
+  z-index: 100;
+
+  
+ 
+  
 }
 
 .days-container{
