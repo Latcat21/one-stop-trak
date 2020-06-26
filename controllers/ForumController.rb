@@ -46,7 +46,7 @@ class ForumController < ApplicationController
 
     #get route for individual post
     get  '/:id' do
-     @post = Post.find params[:id]
+      @post = Post.find params[:id]
       @likes = @post.likes.count
       erb :post_show
     end
@@ -60,10 +60,11 @@ class ForumController < ApplicationController
     #edit route for editing a post
     put '/:id' do
       post = Post.find params[:id]
+      id = post.id
       post.title = params[:title]
       post.content = params[:content]
       post.save
-      redirect '/posts'
+      redirect "/posts/#{id}"
     end
 
     #delete route for deleting a post

@@ -1,21 +1,54 @@
 <div class="container pt-5 mt-5">
-  <h1 class="text-center display-5">Welcome to your account</h1>
+  <h1 class="text-center display-5 pb-3">Welcome to your account</h1>
+    <div class="row ">
       <% if @avg_cal.nil?%>
       <p></p>
       <% else %>
-      <h4 class="text-center">You average:  <%=@avg_cal%> calories a day</h4>
+      <div class="card col-md-4  p-3">
+      <div class="card-header ">
+      <h4 class="text-center "> Average calories a day </h4>
+      </div>
+      <div class="card-body text-center ">
+      <h3>
+      <i class="fas fa-utensils p-2"></i>
+      </h3>
+      <h5> <%=@avg_cal%></h5>
+   
+     </div>
+      </div>
       <% end %>
        <% if @avg_sleep.nil?%>
       <p></p>
       <% else %>
-      <h4 class="text-center">Your average sleep is:  <%=@avg_sleep%>  hours a night</h4>
+      <div class="card col-md-4 p-3">
+      <div class="card-header">
+      <h4 class="text-center ">Average hours slept a night</h4>
+      </div>
+      <div class="card-body text-center ">
+      <h3>
+      <i class="fas fa-bed p-2"></i>
+      </h3>
+      <h5 class="card-body"> <%=@avg_sleep%> </h5>
+      </div>
       <% end %>
+      </div>
 
       <% if @bmr.nil?%>
       <p></p>
       <% else %>
-      <h4 class="text-center">Your BMR :  <%=@bmr.calculation%> calories</h4>
+      <div class="card col-md-4 p-3">
+      <div class="card-header">
+      <h4 class="text-center">Your BMR </h4>
+      </div>
+      <div class="card-body text-center">
+      <h3>
+      <i class="fas fa-weight p-3"></i>
+      </h3>
+      <h5 > <%=@bmr.calculation%> calories </h5>
+      </div>
       <% end %>
+      </div>
+      </div>
   <h5 class="text-center">
         <a href="/days/new" class="btn btn-primary m-4">Start a new day</a>
         <a href="/posts/new" class="btn btn-secondary">Start a new post </a>
