@@ -112,26 +112,20 @@ class ForumController < ApplicationController
     end
 
     post '/:id/likes' do
-
-
       # making it so only logged in users can like posts
       if !session[:logged_in]
-        #message
-        session[:message] = {
+          session[:message] = {
           success: false,
           status: "bad",
           message: "You must be logged in to do that"
         }
-        #redirect
         redirect '/users/login'
       end
        
       logged_in_user = User.find_by ({ :username => session[:username] })
-      #grabbing the post by Id
       found_post = Post.find params[:id]
       
       #check to see if ther user liked it already
-
       found_post.likes.each do | like |
         if like.user_id == logged_in_user.id
           session[:message] = {
@@ -142,16 +136,8 @@ class ForumController < ApplicationController
             redirect '/posts'
           end
       end
-    #creating a new like
-      new_like = Like.new
-      #assignged the post id to the like id
-      new_like.post_id = found_post.id
-    
-      #storing the user id to the comment
-      new_like.user_id = logged_in_user.id
-      #saving the like
-      new_like.save
-      # redirecting to the all posts
+  
+      new_like = Like.create(post_id: found_post.id, user_id: logged_in_user.id)
       redirect '/posts'
 
     end
