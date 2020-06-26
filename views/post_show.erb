@@ -14,16 +14,18 @@
               <button class="like-btn mt-4 "><i class="fas fa-thumbs-up"></i><span> <%= @likes %></span></button><br>
               </div>
             </form>
-  </div>
-    <div class="container">
+
+    
       <h4 class="text-center" >Comment below</h4>
-        <div class="row">
+       
           <% @post.comments.each do |comment|%>
-            <p class="lead text-center"><%=comment.comment%></p>
-          </div>
-          <% end %>
-      </div>
-      <div class="container">
+          <div class="bg-light border border-dark m-5">
+            <p class="lead text-center p-2 "><%=comment.comment%></p>
+            <p class="text-center p-2 "> By: <%=comment.author %>
+            </div>
+           
+        <% end %>
+     
        <form  action="/posts/<%=@post.id %>/comments" method="POST">
         <div class="form-group">
           <label>Comment</label>
@@ -32,3 +34,4 @@
             <button class="btn btn-primary" >Submit</button>
         </form>
         </div>
+</div>
