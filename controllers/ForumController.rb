@@ -33,37 +33,32 @@ class ForumController < ApplicationController
     logged_in_user = User.find_by ({ :username => session[:username] })
 
     new_post = Post.create(title: params[:title], content: params[:content], author: logged_in_user.username, img: logged_in_user.img, user_id: logged_in_user.id )
-    
+
     redirect '/posts'
   end
 
-    
-    get ('/your-posts') do
-      #grabbing the user that is logged in
+    #page for logged in users posts
+  get ('/your-posts') do
       user = User.find_by ({ :username => session[:username] })
-      #displaying all the posts by the logged in user
       @posts = user.posts
-
       erb :user_posts
-    end
+  end
 
+    #get route for individual post
     get  '/:id' do
-      # grabbing the posts
-      @post = Post.find params[:id]
-      #find how many likes are on that post
+     @post = Post.find params[:id]
       @likes = @post.likes.count
       erb :post_show
     end
 
-    
+    #get route for post edit route
     get '/:id/edit' do
-      #finding the post
       @post = Post.find params[:id]
       erb :edit_post
-    end
+    end 
       
+    #edit route for editing a post
     put '/:id' do
-      #finding the post
       post = Post.find params[:id]
       post.title = params[:title]
       post.content = params[:content]
@@ -71,25 +66,10 @@ class ForumController < ApplicationController
       redirect '/posts'
     end
 
+    #delete route for deleting a post
     delete '/:id' do
         post = Post.find params[:id]
-
-        # access the comments
-        comments = post.comments
-        #looping through the array to destroy the relationship
-        comments.each do |relation|
-          relation.destroy
-        end
-
-        #accessing the likes
-        likes = post.likes
-        #looping through the array to destroy the relationship
-        likes.each do |relation|
-          relation.destroy
-        end
-        #deleting the post
         post.destroy
-        #updating the sessiongs
         session[:message] = {
           success: true,
           status: "good",
@@ -98,11 +78,11 @@ class ForumController < ApplicationController
         redirect "/days"
      end
 
+   #posting a comment to a post
     post '/:id/comments' do
         #only logged in users can comment on posts
         if !session[:logged_in]
-          #message
-          session[:message] = {
+            session[:message] = {
             success: false,
             status: "bad",
             message: "You must be logged in to do that"
@@ -110,34 +90,23 @@ class ForumController < ApplicationController
           #redirect
           redirect '/users/login'
         end
-    
-        #grabbing the post by Id
-        found_post = Post.find params[:id]
-        #creating a new comment
-        new_comment = Comment.new 
-        #storing the inputs
-        new_comment.comment = params[:comment]
+   
 
-        if new_comment.comment == ''
-        session[:message] = {
-        success: false,
-        status: "bad",
-        message: "please fill in the feilds"
-        }
-        redirect '/posts'
+        if params[:comment] == ''
+          session[:message] = {
+          success: false,
+          status: "bad",
+          message: "please fill in the feilds"
+          }
+          redirect '/posts'
         end
-    
-        #storing the post id's in the comment
-        new_comment.post_id= found_post.id
-        #finding the logged in user
+           
+        found_post = Post.find params[:id]
         logged_in_user = User.find_by ({ :username => session[:username] })
-        #storing the logged in users name to the comment
-        new_comment.author = logged_in_user.username
-        #storing the user id to the comment
-        new_comment.user_id = logged_in_user.id
-        #saving the new comment
-        new_comment.save
-        #redirecting to all the posts
+
+        #creating a new comment
+        new_comment = Comment.create(comment: params[:comment], post_id: found_post.id, author: logged_in_user.username, user_id: logged_in_user.id )
+        
         redirect '/posts'
 
     end
