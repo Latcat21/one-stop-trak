@@ -101,7 +101,7 @@ class DayController < ApplicationController
       logged_in_user = User.find_by ({ :username => session[:username] })
       new_day = Day.create(name: params[:name], sleep: params[:hours], food: params[:foods], workout: params[:workout], calorie: params[:calories], user_id: logged_in_user.id  )
     
-    redirect '/days'
+     redirect '/days'
 
       # FOR FUTUTUE CALORIE DATABASE
 

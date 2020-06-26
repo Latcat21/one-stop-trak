@@ -21,8 +21,7 @@ class UserController < ApplicationController
         status: "good",
         message: "Logged in as #{user.username}"
       }
-     
-
+    
       redirect '/days'
       else
       # error -- incorrect un or pw
@@ -61,6 +60,7 @@ class UserController < ApplicationController
       # redirect 
       redirect '/users/register'
     end
+
     if user.password != params[:passwordtwo]
       session[:logged_in] = false
       session[:message] = {
@@ -102,9 +102,6 @@ class UserController < ApplicationController
 
     end
 
-
-
-  
   get '/logout' do
     username = session[:username] # grab username before destroying session...
     #destroying the session

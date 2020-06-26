@@ -1,59 +1,38 @@
 class ForumController < ApplicationController
 
   get ('/') do
-    #displaying all the posts
-    @posts = Post.all
+   @posts = Post.all
     erb :all_post
   end
-
-
 
   get ('/new') do
     # making it so only logged in users can like posts
     if !session[:logged_in]
-    
-    session[:message] = {
-      success: false,
-      status: "bad",
-      message: "You must be logged in to do that"
+       session[:message] = {
+        success: false,
+        status: "bad",
+        message: "You must be logged in to do that"
           }
-      #redirect
+      
     redirect '/users/login'
     end
     erb :new_post
   end
 
   post ('/new') do
-    new_post = Post.new
-    new_post.title = params[:title]
-    new_post.content = params[:content]
-
-    # making sure there is a post title and content
-    if new_post.title == '' || new_post.content == ''
-
-    session[:message] = {
-      success: false,
-      status: "bad",
-      message: "please fill in the feilds"
-      }
-
-    redirect '/posts/new'
+    #making sure forms are filled in
+    if params[:title] == '' || params[:content] == ''
+        session[:message] = {
+          success: false,
+          status: "bad",
+          message: "please fill in the fields"
+        }
+        redirect '/posts/new'
     end
-
-    if new_post.content.length < 10
-      session[:message] = {
-      success: false,
-      status: "bad",
-      message: "please submit a longer poster"
-      }
-    redirect '/posts/new'
-    end
-
+    
     logged_in_user = User.find_by ({ :username => session[:username] })
-    new_post.author = logged_in_user.username
-    new_post.user_id = logged_in_user.id
-    new_post.img = logged_in_user.img
-    new_post.save
+
+    new_post = Post.create(title: params[:title], content: params[:content], author: logged_in_user.username, img: logged_in_user.img, user_id: logged_in_user.id )
     
     redirect '/posts'
   end
