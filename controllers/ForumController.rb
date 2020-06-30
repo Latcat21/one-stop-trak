@@ -108,7 +108,7 @@ class ForumController < ApplicationController
         #creating a new comment
         new_comment = Comment.create(comment: params[:comment], post_id: found_post.id, author: logged_in_user.username, user_id: logged_in_user.id )
         
-        redirect '/posts'
+        redirect "/posts/#{found_post.id}"
 
     end
 
@@ -134,12 +134,12 @@ class ForumController < ApplicationController
               status: "bad",
               message: "You already liked this post"
             }
-            redirect '/posts'
+            redirect "/posts/#{found_post.id}"
           end
       end
   
       new_like = Like.create(post_id: found_post.id, user_id: logged_in_user.id)
-      redirect '/posts'
+      redirect "/posts/#{found_post.id}"
 
     end
 

@@ -46,22 +46,22 @@ class SearchController  < ApplicationController
     individual_meal = parsed_it["meals"]
 
     individual_meal.each do | meal |
-      new_meal = Meal.new
-      new_meal.name = meal["strMeal"]
-      new_meal.img = meal["strMealThumb"]
-      new_meal.instructions = meal["strInstructions"]
+      new_meal = Meal.create(name: meal["strMeal"], img: meal["strMealThumb"], instructions: meal["strInstructions"],video: meal["strYoutube"], meal_id: meal["idMeal"], user_id: user.id )
+      # new_meal.name = meal["strMeal"]
+      # new_meal.img = meal["strMealThumb"]
+      # new_meal.instructions = meal["strInstructions"]
       
-      new_meal.video = meal["strYoutube"]
-      new_meal.meal_id = meal["idMeal"]
-      new_meal.user_id = user.id
-      new_meal.save
+      # new_meal.video = meal["strYoutube"]
+      # new_meal.meal_id = meal["idMeal"]
+      # new_meal.user_id = user.id
+      # new_meal.save
       session[:message] = {
         success: true,
         status: "good",
         message: "You Succesfull added #{new_meal.name} to your account"
       }
     end
-    redirect '/search'
+    redirect '/search/your-meals'
   end
 
   get ('/your-meals') do
