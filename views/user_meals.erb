@@ -22,6 +22,9 @@
 </head>
   <div class="container mt-5">
     <h1 class="text-center pt-5">Your meals</h1>
+     <% if !@meals.any? %>
+  <h5 class="text-center">You currently don't have any meals</h5>
+   <% else %>
       <div class="results ">
       <% @meals.each do | meal |%>
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
@@ -34,6 +37,7 @@
         </p>
     </div>
   </div>
+  <%end%>
 <% end %>
 </div>
 </div>
