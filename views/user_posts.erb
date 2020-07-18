@@ -1,5 +1,8 @@
 <div class="container mt-5 py-5">
   <h1 class="text-center my-4 border-bottom p-2">Here are all Your posts</h1>
+   <% if !@posts.any? %>
+  <h5 class="text-center">You haven't created any posts</h5>
+   <% else %>
     <% @posts.each do |post|%>
       <div class="row border-bottom border-left">
         <div class="col-lg-4 my-3">
@@ -15,5 +18,6 @@
                 <a href="/posts/<%= post.id%>" class="btn btn-primary">View</a>
         </div>
       </div>
+      <%end%>
     <%end%>
   </div>

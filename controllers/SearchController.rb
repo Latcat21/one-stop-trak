@@ -15,13 +15,13 @@ class SearchController  < ApplicationController
     parsed_it = JSON.parse it 
     
 
-    #checking if there are results
+    
     if parsed_it["meals"]
       session[:search] = true
       @meals = parsed_it["meals"]
     else
-      session[:seach] = "bad"
-   end
+      session[:search] = 'bad'
+    end
    
     erb :search_page
   end
@@ -47,16 +47,17 @@ class SearchController  < ApplicationController
 
     individual_meal.each do | meal |
       new_meal = Meal.create(name: meal["strMeal"], img: meal["strMealThumb"], instructions: meal["strInstructions"],video: meal["strYoutube"], meal_id: meal["idMeal"], user_id: user.id )
-   end
+    end
 
    session[:message] = {
         success: true,
         status: "good",
-        message: "You Succesfull added #{new_meal.name} to your account"
+        message: "Meal added to your account"
       }
-    
-    redirect '/search/your-meals'
+      redirect '/search/your-meals'
+
   end
+
 
   get ('/your-meals') do
     user = User.find_by ({ :username => session[:username]})
