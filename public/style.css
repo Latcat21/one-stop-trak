@@ -99,6 +99,35 @@
   color: #000;
   text-transform: uppercase;
 }
+.food-section{
+  height: 100vh;
+}
+.img-gal{
+  width: 100%;
+  list-style: none;
+}
 
+.img-gal li{
+  display: block;
+  float: left;
+  width: 20%;
+  
+}
+.meal-photo{
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+.meal-photo img{
+  opacity: 0.7;
+  width: 100%;
+  transform: scale(1.15);
+}
 
+ .meal-photo img:hover{
+  transform: scale(1.03);
+  transition: ease .75s, opacity 0.5s;
+  opacity: 1;
+}
 
