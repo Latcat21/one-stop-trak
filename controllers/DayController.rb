@@ -60,7 +60,7 @@ class DayController < ApplicationController
       bmr.save
 
       redirect '/days'
-    
+      
    end
   
    # GET ROUTE OF EDITING THE ACCOUNT

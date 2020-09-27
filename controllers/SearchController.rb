@@ -14,8 +14,6 @@ class SearchController  < ApplicationController
     it = Net::HTTP.get(uri)
     parsed_it = JSON.parse it 
     
-
-    
     if parsed_it["meals"]
       session[:search] = true
       @meals = parsed_it["meals"]
@@ -58,20 +56,21 @@ class SearchController  < ApplicationController
 
   end
 
-
+  #All users meals
   get ('/your-meals') do
     user = User.find_by ({ :username => session[:username]})
     @meals = user.meals
 
     erb :user_meals
   end
-
+  #users meal show page route
   get '/your-meals/:id' do
     user = User.find_by ({:username => session[:username]})
     @meal = Meal.find params[:id]
     erb :user_meal_show
   end
 
+  # delete individual meal route
   delete '/your-meals/:id' do
     meal = Meal.find params[:id]
     name = meal.name
