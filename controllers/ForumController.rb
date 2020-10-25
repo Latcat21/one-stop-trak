@@ -37,7 +37,7 @@ class ForumController < ApplicationController
     redirect '/posts'
   end
 
-    #page for logged in users posts
+  #page for logged in users posts
   get ('/your-posts') do
       user = User.find_by ({ :username => session[:username] })
       @posts = user.posts
