@@ -1,11 +1,7 @@
-A mobile first app to help you organize your day and keep track of your health and fitness goals
-
-
-when a user starts a new day they can list tasks for that day, their wake up time, the foods they have eaten, calories consumed, and workouts completed.
-
-On the users home page they will be shown a list of all their days, their BMR,  and the average amount of calories they consumed per day.
-
-There is a forum section where users can make post, comment, and like health and fitness related posts.
+A Sinatra based health and fitness tracking app where one can search and save recipes, track daily
+tasks, foods eaten, workouts, and calories consumed. The average calorie consumption per day is
+calculated and displayed, average hours slept per night, and your BMR. There is also a forum where
+users can post, comment, and like health and fitness related topics.
 
 
 https://one-stop-track.herokuapp.com/
