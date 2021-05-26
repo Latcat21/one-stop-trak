@@ -8,7 +8,7 @@ A Sinatra based health and fitness app that tracks daily activity, diet, and wor
 # Misc facts to highlight
 - 19 views files
 - 8 different sql tables
-- Used a bootrap Modal for the forum, to make for a better user experience.
+- Used a bootstrap Modal for the forum, to make for a better user experience.
 - Navigation changes depending on if user is logged in and where they are at on the site.
 - All routes are protected and users can not post unless they are a member / logged in.
 - Build a table using information from a 3rd party api. (https://www.themealdb.com/api.php)
